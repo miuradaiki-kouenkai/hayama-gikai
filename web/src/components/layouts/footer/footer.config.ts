@@ -19,23 +19,26 @@ export const primaryLinks: FooterLink[] = [
     href: routes.home(),
   },
   {
-    label: "みらい議会＠葉山町とは",
-    href: EXTERNAL_LINKS.ABOUT_NOTE,
+    label: "議案を検索する",
+    href: routes.billsList(),
+  },
+  {
+    label: "定例会の一覧",
+    href: routes.sessions(),
+  },
+  {
+    label: "葉山町議会（町公式サイト）",
+    href: "https://www.town.hayama.lg.jp/gikai/",
     external: true,
   },
   {
-    label: "本家「みらい議会」",
-    href: "https://gikai.team-mir.ai/",
+    label: "自主制作ガイドライン",
+    href: EXTERNAL_LINKS.FORK_GUIDELINES_NOTE,
     external: true,
   },
 ];
 
 export const policyLinks: FooterPolicyLink[] = [
-  {
-    label: "よくあるご質問",
-    href: EXTERNAL_LINKS.FAQ,
-    external: true,
-  },
   {
     label: "利用規約",
     href: routes.terms(),

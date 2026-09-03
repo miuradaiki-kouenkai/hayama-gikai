@@ -121,3 +121,23 @@ export async function findLatestClosedDietSession(
   }
   return data;
 }
+
+/**
+ * 全ての議会会期を開催日の降順で返す。
+ * 定例会の一覧ページで使う。
+ */
+export async function findAllDietSessions(): Promise<DietSession[]> {
+  const supabase = createAdminClient();
+
+  const { data, error } = await supabase
+    .from("diet_sessions")
+    .select("*")
+    .order("start_date", { ascending: false });
+
+  if (error) {
+    console.error("Failed to fetch diet sessions:", error);
+    return [];
+  }
+
+  return data;
+}

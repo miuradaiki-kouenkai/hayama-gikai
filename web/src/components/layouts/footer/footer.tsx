@@ -97,6 +97,8 @@ function FooterCopyright() {
       <p className="mb-3 text-[12px] leading-relaxed">
         これは政党チームみらいが運営しているものではありません。
         <br />
+        本サービスはみらい議会を葉山町議会向けに改変した、有志による非公式サービスです。
+        <br />
         本家「みらい議会」は
         <a
           href="https://gikai.team-mir.ai/"

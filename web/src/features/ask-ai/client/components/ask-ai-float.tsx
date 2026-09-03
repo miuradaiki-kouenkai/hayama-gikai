@@ -1,15 +1,9 @@
 "use client";
 
-import { Sparkles } from "lucide-react";
+import { X } from "lucide-react";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
 import { AskAiPanel } from "./ask-ai-panel";
 
 interface AskAiFloatProps {
@@ -20,8 +14,8 @@ interface AskAiFloatProps {
 }
 
 /**
- * 議案詳細のフローティング「AIに質問する」ボタン。
- * 内蔵チャットの代わりに、外部AIへの導線ダイアログを開く。
+ * 議案詳細のフローティング「AIに質問する」ボタンと右パネル。
+ * 元チャット欄と同じオーバーレイ配置で、主列のレイアウトには触らない。
  */
 export function AskAiFloat({
   billName,
@@ -30,6 +24,15 @@ export function AskAiFloat({
   pageUrl,
 }: AskAiFloatProps) {
   const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setIsOpen(false);
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isOpen]);
 
   return (
     <>
@@ -59,14 +62,26 @@ export function AskAiFloat({
         </div>
       </div>
 
-      <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <DialogContent className="max-w-lg max-h-[85dvh] overflow-y-auto">
-          <DialogHeader>
-            <DialogTitle className="flex items-center gap-2 text-left">
-              <Sparkles className="h-5 w-5 text-primary-accent" aria-hidden />
+      {isOpen && (
+        <section
+          aria-label="この議案をAIに聞く"
+          className="fixed inset-x-0 bottom-0 z-50 bg-white shadow-md rounded-t-2xl flex flex-col max-h-[85dvh] overflow-y-auto md:bottom-4 md:right-4 md:left-auto md:w-[450px] md:rounded-2xl md:max-h-[80vh] p-5"
+        >
+          <div className="flex items-center justify-between gap-2">
+            <h2 className="text-lg font-bold text-black">
               この議案をAIに聞く
-            </DialogTitle>
-          </DialogHeader>
+            </h2>
+            <Button
+              type="button"
+              variant="ghost"
+              size="sm"
+              onClick={() => setIsOpen(false)}
+              aria-label="閉じる"
+            >
+              <X className="h-4 w-4" aria-hidden />
+              閉じる
+            </Button>
+          </div>
           <AskAiPanel
             billName={billName}
             summary={summary}
@@ -74,8 +89,8 @@ export function AskAiFloat({
             pageUrl={pageUrl}
             hideHeading
           />
-        </DialogContent>
-      </Dialog>
+        </section>
+      )}
     </>
   );
 }

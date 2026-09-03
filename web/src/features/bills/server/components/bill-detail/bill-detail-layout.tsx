@@ -1,6 +1,5 @@
 import { Container } from "@/components/layouts/container";
 import { AskAiFloat } from "@/features/ask-ai/client/components/ask-ai-float";
-import { AskAiPanel } from "@/features/ask-ai/client/components/ask-ai-panel";
 import type { DifficultyLevelEnum } from "@/features/bill-difficulty/shared/types";
 import { InterviewLandingSection } from "@/features/interview-config/client/components/interview-landing-section";
 import { getInterviewConfig } from "@/features/interview-config/server/loaders/get-interview-config";
@@ -38,10 +37,8 @@ export async function BillDetailLayout({
   const pageUrl = new URL(routes.billDetail(bill.id), env.webUrl).toString();
 
   return (
-    <div className="container mx-auto pb-8 max-w-4xl pc:max-w-6xl">
-      <div className="pc:grid pc:grid-cols-[minmax(0,1fr)_360px] pc:gap-8 pc:items-start">
-        <div className="min-w-0">
-          {/*
+    <div className="container mx-auto pb-8 max-w-4xl">
+      {/*
         テキスト選択機能とチャット連携の実装パターン:
         - BillContentはServer Componentのまま保持（SSRによる高速な初期レンダリング）
         - BillDetailClientでクライアントサイド機能（テキスト選択、チャット連携）を提供
@@ -105,28 +102,14 @@ export async function BillDetailLayout({
               <BillDisclaimer />
             </div>
           </Container>
-        </div>
 
-        {/* 右パネル（PCのみ。元チャット欄の位置） */}
-        <aside className="hidden pc:block sticky top-24 rounded-2xl border border-mirai-border bg-white p-5">
-          <AskAiPanel
+          {/* 外部AIに聞く（フローティングボタン＋右パネル） */}
+          <AskAiFloat
             billName={bill.name}
             summary={bill.bill_content?.summary}
             statusNote={bill.status_note}
             pageUrl={pageUrl}
           />
-        </aside>
-      </div>
-
-      {/* 外部AIに聞く（モバイル用フローティングボタン） */}
-      <div className="pc:hidden">
-        <AskAiFloat
-          billName={bill.name}
-          summary={bill.bill_content?.summary}
-          statusNote={bill.status_note}
-          pageUrl={pageUrl}
-        />
-      </div>
     </div>
   );
 }
