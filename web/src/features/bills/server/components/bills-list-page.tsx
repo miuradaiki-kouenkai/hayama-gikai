@@ -253,13 +253,13 @@ export async function BillsListPage({
         {/* 掲載外の法案は本家の一覧に送る */}
         <div className="mt-8 text-sm text-mirai-text-secondary">
           <Link
-            href="https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/menu.htm"
+            href="https://www.town.hayama.lg.jp/gikai/"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1 hover:opacity-80"
           >
-            国会に提出されているすべての法案は{" "}
-            <span className="underline">国会議案情報へ</span>
+            葉山町議会に提出されているすべての議案は{" "}
+            <span className="underline">葉山町議会へ</span>
             <ExternalLink className="h-3 w-3" aria-hidden />
           </Link>
         </div>

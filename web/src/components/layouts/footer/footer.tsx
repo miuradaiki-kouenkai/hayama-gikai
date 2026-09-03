@@ -30,10 +30,10 @@ export function Footer() {
 function FooterLogoSection() {
   return (
     <div className="flex flex-col items-center text-center mb-9">
-      <Link href={routes.home()} aria-label="みらい議会 トップページ">
+      <Link href={routes.home()} aria-label="みらい議会＠葉山町 トップページ">
         <Image
           src="/img/logo.svg"
-          alt="みらい議会"
+          alt="みらい議会＠葉山町"
           width={150}
           height={128}
           className="h-auto"
@@ -94,7 +94,20 @@ function FooterPolicies() {
 function FooterCopyright() {
   return (
     <div className="text-center text-sm font-medium text-slate-800">
-      © 2025 Team Mirai All rights Reserved
+      <p className="mb-3 text-[12px] leading-relaxed">
+        これは政党チームみらいが運営しているものではありません。
+        <br />
+        本家「みらい議会」は
+        <a
+          href="https://gikai.team-mir.ai/"
+          target="_blank"
+          rel="noreferrer"
+          className="underline"
+        >
+          こちら
+        </a>
+      </p>
+      <p>© みらい議会＠葉山町 All rights Reserved</p>
     </div>
   );
 }

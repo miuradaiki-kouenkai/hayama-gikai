@@ -8,9 +8,9 @@ import {
 } from "@/components/layouts/legal-page-layout";
 
 export const metadata: Metadata = {
-  title: "みらい議会AIインタビューデータ利用規約 | みらい議会",
+  title: "みらい議会＠葉山町AIインタビューデータ利用規約 | みらい議会＠葉山町",
   description:
-    "みらい議会のAIインタビューデータをオープンデータとして利用するにあたっての条件を定めています。",
+    "みらい議会＠葉山町のAIインタビューデータをオープンデータとして利用するにあたっての条件を定めています。",
 };
 
 const CC_BY_LICENSE_URL = "https://creativecommons.org/licenses/by/4.0/deed.ja";

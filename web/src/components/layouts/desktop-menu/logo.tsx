@@ -15,7 +15,7 @@ export function DesktopMenuLogo() {
       <div className="relative w-[116px] h-[98.38px]">
         <Image
           src="/img/logo.svg"
-          alt="みらい議会ロゴ"
+          alt="みらい議会＠葉山町ロゴ"
           fill
           className="object-contain"
           priority
@@ -27,12 +27,12 @@ export function DesktopMenuLogo() {
         <h1
           className="font-extrabold text-black"
           style={{
-            fontSize: "36px",
+            fontSize: "30px",
             lineHeight: "1em",
-            letterSpacing: "0.1em",
+            letterSpacing: "0.06em",
           }}
         >
-          みらい議会
+          みらい議会＠葉山町
         </h1>
         <p
           className="font-bold text-black"
@@ -41,7 +41,7 @@ export function DesktopMenuLogo() {
             lineHeight: "2em",
           }}
         >
-          国会の議論をわかりやすく
+          葉山町議会の議論をわかりやすく
         </p>
       </div>
     </Link>

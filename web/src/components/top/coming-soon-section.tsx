@@ -17,7 +17,7 @@ export function ComingSoonSection({ bills }: ComingSoonSectionProps) {
           これから掲載される法案
         </h2>
         <p className="text-xs text-mirai-text-secondary">
-          みらい議会は、順次更新されていきます
+          みらい議会＠葉山町は、順次更新されていきます
         </p>
       </div>
 
@@ -36,16 +36,16 @@ export function ComingSoonSection({ bills }: ComingSoonSectionProps) {
         </div>
       )}
 
-      {/* 国会議案情報へのリンク */}
+      {/* 葉山町議会の議案情報へのリンク */}
       <div className="text-right text-sm text-mirai-text-secondary">
         <Link
-          href="https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/menu.htm"
+          href="https://www.town.hayama.lg.jp/gikai/"
           target="_blank"
           rel="noopener noreferrer"
           className="hover:opacity-80 inline-flex items-center gap-1"
         >
-          国会に提出されているすべての法案は{" "}
-          <span className="underline">国会議案情報へ</span>
+          葉山町議会に提出されているすべての議案は{" "}
+          <span className="underline">葉山町議会へ</span>
           <ExternalLink className="h-3 w-3" />
         </Link>
       </div>

@@ -11,7 +11,7 @@ export default function LoginPage() {
             管理者ログイン
           </CardTitle>
           <p className="text-sm text-muted-foreground text-center">
-            みらい議会 Admin
+            みらい議会＠葉山町 Admin
           </p>
         </CardHeader>
         <CardContent>
@@ -21,7 +21,7 @@ export default function LoginPage() {
 
           <div className="mt-6 text-center">
             <p className="text-xs text-muted-foreground">
-              © 2025 チームみらい. All rights reserved.
+              © みらい議会＠葉山町. All rights reserved.
             </p>
           </div>
         </CardContent>

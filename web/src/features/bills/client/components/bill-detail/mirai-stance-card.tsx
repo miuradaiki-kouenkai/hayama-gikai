@@ -17,22 +17,22 @@ export function MiraiStanceCard({ stance, billStatus }: MiraiStanceCardProps) {
 
   const styles = getStanceStyles(stance, isPreparing);
   const comment = isPreparing
-    ? "法案提出後、党内で検討のうえ賛否を表明します。"
+    ? "議案提出後、運営で検討のうえ視点を表明します。"
     : stance?.comment;
 
   return (
     <>
-      <h2 className="text-[22px] font-bold mb-4">🗳️チームみらいの賛否</h2>
+      <h2 className="text-[22px] font-bold mb-4">🗳️みらい議会＠葉山町の視点</h2>
       <div className="relative p-1 rounded-2xl bg-mirai-gradient">
         <div className="bg-white rounded-lg px-6 pb-8 pt-10">
           <div className="flex flex-col gap-8">
             {/* ヘッダー部分：ロゴとスタンスバッジ */}
             <div className="flex flex-col items-center gap-8">
-              {/* チームみらいロゴ */}
+              {/* みらい議会＠葉山町ロゴ */}
               <div className="relative w-37 h-31">
                 <Image
                   src="/img/logo.svg"
-                  alt="チームみらい"
+                  alt="みらい議会＠葉山町"
                   fill
                   className="object-contain"
                 />

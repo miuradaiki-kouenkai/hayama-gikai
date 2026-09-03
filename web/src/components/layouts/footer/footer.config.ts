@@ -19,18 +19,13 @@ export const primaryLinks: FooterLink[] = [
     href: routes.home(),
   },
   {
-    label: "みらい議会とは",
+    label: "みらい議会＠葉山町とは",
     href: EXTERNAL_LINKS.ABOUT_NOTE,
     external: true,
   },
   {
-    label: "チームみらいについて",
-    href: EXTERNAL_LINKS.TEAM_MIRAI_ABOUT,
-    external: true,
-  },
-  {
-    label: "寄附で応援する",
-    href: EXTERNAL_LINKS.DONATION,
+    label: "本家「みらい議会」",
+    href: "https://gikai.team-mir.ai/",
     external: true,
   },
 ];

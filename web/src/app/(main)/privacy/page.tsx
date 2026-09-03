@@ -10,8 +10,8 @@ import {
 import { routes } from "@/lib/routes";
 
 export const metadata: Metadata = {
-  title: "プライバシーポリシー | みらい議会",
-  description: "みらい議会のプライバシーポリシー",
+  title: "プライバシーポリシー | みらい議会＠葉山町",
+  description: "みらい議会＠葉山町のプライバシーポリシー",
 };
 
 export default function PrivacyPage() {
