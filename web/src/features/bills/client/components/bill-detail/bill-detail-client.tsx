@@ -2,6 +2,7 @@
 
 import type { ReactNode } from "react";
 import { useRef } from "react";
+import { isBuiltInChatEnabled } from "@/features/ask-ai/shared/built-in-chat";
 import type { DifficultyLevelEnum } from "@/features/bill-difficulty/shared/types";
 import { TextSelectionWrapper } from "@/features/bills/client/components/text-selection-tooltip/text-selection-wrapper";
 import {
@@ -32,10 +33,16 @@ export function BillDetailClient({
   children,
 }: BillDetailClientProps) {
   const chatButtonRef = useRef<ChatButtonRef>(null);
+  const chatEnabled = isBuiltInChatEnabled();
 
   const handleOpenChat = (selectedText: string) => {
     chatButtonRef.current?.openWithText(selectedText);
   };
+
+  // 内蔵チャット無効時は選択ツールチップごと出さない
+  if (!chatEnabled) {
+    return <>{children}</>;
+  }
 
   return (
     <>

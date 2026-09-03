@@ -63,7 +63,14 @@ export async function ingestSessions(
   const skipped: string[] = [];
   for (const indexSession of indexSessions) {
     const key = sessionMatchKey(indexSession.label);
-    const dates = schedules.get(key);
+    // 町サイト「第2回定例会6月定例会議」に対し日程表は「6月定例会議」のように
+    // 回次を省く場合があるため、どちらかが他方を含むかで突合せる
+    const hit = [...schedules.entries()].find(
+      ([scheduleKey]) =>
+        (scheduleKey.length >= 4 && key.includes(scheduleKey)) ||
+        (key.length >= 4 && scheduleKey.includes(key))
+    );
+    const dates = hit?.[1];
     if (!dates || dates.length === 0) {
       skipped.push(indexSession.label);
       continue;

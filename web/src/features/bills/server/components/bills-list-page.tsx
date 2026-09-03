@@ -15,6 +15,7 @@ import Link from "next/link";
 import { Container } from "@/components/layouts/container";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { getDifficultyLevel } from "@/features/bill-difficulty/server/loaders/get-difficulty-level";
+import { isBuiltInChatEnabled } from "@/features/ask-ai/shared/built-in-chat";
 import { HomeChatClient } from "@/features/chat/client/components/home-chat-client";
 import { routes } from "@/lib/routes";
 import { BillSearchCard } from "../../client/components/bill-list/bill-search-card";
@@ -265,15 +266,17 @@ export async function BillsListPage({
         </div>
       </Container>
 
-      {/* チャットはトップと同じものを出す。文脈は表示中の一覧に合わせる。 */}
-      <HomeChatClient
-        currentDifficulty={currentDifficulty}
-        bills={bills.map((bill) => ({
-          name: chatBillName(bill),
-          summary: bill.bill_content?.summary,
-          tags: bill.tags?.map((tag) => tag.label) ?? [],
-        }))}
-      />
+      {/* チャットはトップと同じものを出す。文脈は表示中の一覧に合わせる。（無効時は出さない） */}
+      {isBuiltInChatEnabled() && (
+        <HomeChatClient
+          currentDifficulty={currentDifficulty}
+          bills={bills.map((bill) => ({
+            name: chatBillName(bill),
+            summary: bill.bill_content?.summary,
+            tags: bill.tags?.map((tag) => tag.label) ?? [],
+          }))}
+        />
+      )}
     </>
   );
 }

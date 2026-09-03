@@ -2,6 +2,7 @@ import { Container } from "@/components/layouts/container";
 import { About } from "@/components/top/about";
 import { ComingSoonSection } from "@/components/top/coming-soon-section";
 import { TeamMirai } from "@/components/top/team-mirai";
+import { isBuiltInChatEnabled } from "@/features/ask-ai/shared/built-in-chat";
 import { getDifficultyLevel } from "@/features/bill-difficulty/server/loaders/get-difficulty-level";
 import { BillDisclaimer } from "@/features/bills/client/components/bill-detail/bill-disclaimer";
 import { BillSearchOverlay } from "@/features/bills/client/components/bill-search-overlay";
@@ -142,14 +143,16 @@ export default async function Home() {
         <BillDisclaimer />
       </Container>
 
-      {/* チャット機能 */}
-      <HomeChatClient
-        currentDifficulty={currentDifficulty}
-        bills={billsByTag
-          .flatMap((x) => x.bills)
-          .concat(featuredBills)
-          .map(toBillChatContext)}
-      />
+      {/* チャット機能（無効時は外部AI導線のみ） */}
+      {isBuiltInChatEnabled() && (
+        <HomeChatClient
+          currentDifficulty={currentDifficulty}
+          bills={billsByTag
+            .flatMap((x) => x.bills)
+            .concat(featuredBills)
+            .map(toBillChatContext)}
+        />
+      )}
     </>
   );
 }

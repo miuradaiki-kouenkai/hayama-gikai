@@ -1,4 +1,5 @@
 import { Container } from "@/components/layouts/container";
+import { AskAiPanel } from "@/features/ask-ai/client/components/ask-ai-panel";
 import type { DifficultyLevelEnum } from "@/features/bill-difficulty/shared/types";
 import { InterviewLandingSection } from "@/features/interview-config/client/components/interview-landing-section";
 import { getInterviewConfig } from "@/features/interview-config/server/loaders/get-interview-config";
@@ -11,6 +12,8 @@ import { BillStatusProgress } from "../../../client/components/bill-detail/bill-
 import { MiraiStanceCard } from "../../../client/components/bill-detail/mirai-stance-card";
 import type { BillWithContent } from "../../../shared/types";
 import { BillShareButtons } from "../share/bill-share-buttons";
+import { env } from "@/lib/env";
+import { routes } from "@/lib/routes";
 import { BillContent } from "./bill-content";
 import { BillDetailHeader } from "./bill-detail-header";
 
@@ -90,6 +93,16 @@ export async function BillDetailLayout({
         {/* シェアボタン */}
         <div className="my-8">
           <BillShareButtons bill={bill} />
+        </div>
+
+        {/* 外部AIに聞く */}
+        <div className="my-8">
+          <AskAiPanel
+            billName={bill.name}
+            summary={bill.bill_content?.summary}
+            statusNote={bill.status_note}
+            pageUrl={new URL(routes.billDetail(bill.id), env.webUrl).toString()}
+          />
         </div>
 
         {/* データの出典と免責事項 */}

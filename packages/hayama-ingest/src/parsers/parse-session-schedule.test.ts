@@ -17,4 +17,23 @@ describe("parseSessionSchedule", () => {
     expect(schedule.dates).toContain("2025-05-15");
     expect(schedule.dates[0]).toBe("2025-05-15");
   });
+
+  it("第1回定例会の会期名だけを読み取る", () => {
+    const schedule = parseSessionSchedule(readShiftJis("nittei-kaigi-40.html"));
+    expect(schedule.label).toBe("令和7年第1回定例会");
+    expect(schedule.dates[0]).toBe("2025-02-12");
+    expect(schedule.dates[schedule.dates.length - 1]).toBe("2025-03-19");
+  });
+
+  it("回次の無い6月・12月定例会議も読み取る", () => {
+    const june = parseSessionSchedule(readShiftJis("nittei-kaigi-43.html"));
+    expect(june.label).toBe("令和7年6月定例会議");
+    expect(june.dates.length).toBeGreaterThan(0);
+
+    const december = parseSessionSchedule(
+      readShiftJis("nittei-kaigi-46.html")
+    );
+    expect(december.label).toBe("令和7年12月定例会議");
+    expect(december.dates.length).toBeGreaterThan(0);
+  });
 });
