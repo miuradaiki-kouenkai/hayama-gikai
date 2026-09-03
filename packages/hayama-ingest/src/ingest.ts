@@ -1,21 +1,24 @@
 import { HayamaSiteClient } from "./fetchers/hayama-site-client";
 import { ingestBills } from "./services/ingest-bills";
 import { ingestSessions } from "./services/ingest-sessions";
+import { ingestTags } from "./services/ingest-tags";
 
 export { ingestBills } from "./services/ingest-bills";
 export type { IngestBillsParams, IngestBillsResult } from "./services/ingest-bills";
 export { ingestSessions } from "./services/ingest-sessions";
+export { ingestTags } from "./services/ingest-tags";
+export type { IngestTagsParams, IngestTagsResult } from "./services/ingest-tags";
 export type {
   IngestSessionsParams,
   IngestSessionsResult,
 } from "./services/ingest-sessions";
 
-export type IngestMode = "sessions" | "bills" | "all";
+export type IngestMode = "sessions" | "bills" | "tags" | "all";
 
 export type IngestOptions = {
   mode: IngestMode;
   /** 元号年（例: 7 = 令和7年）。sessions / bills に必須 */
-  eraYear: number;
+  eraYear?: number;
   /** bills で取り込む定例会の開催月（例: 6）。省略時はその年の全会期 */
   month?: number;
   client?: HayamaSiteClient;
@@ -31,15 +34,21 @@ export type IngestOptions = {
 export async function runIngest(options: IngestOptions): Promise<void> {
   const client = options.client ?? new HayamaSiteClient();
   if (options.mode === "sessions" || options.mode === "all") {
+    if (options.eraYear === undefined) throw new Error("sessions には --era-year が必須");
     const stats = await ingestSessions({ eraYear: options.eraYear, client });
     console.log(`会期の取込完了:`, JSON.stringify(stats));
   }
   if (options.mode === "bills" || options.mode === "all") {
+    if (options.eraYear === undefined) throw new Error("bills には --era-year が必須");
     const stats = await ingestBills({
       eraYear: options.eraYear,
       month: options.month,
       client,
     });
     console.log(`議案の取込完了:`, JSON.stringify(stats));
+  }
+  if (options.mode === "tags" || options.mode === "all") {
+    const stats = await ingestTags({ eraYear: options.eraYear });
+    console.log(`タグの取込完了:`, JSON.stringify(stats));
   }
 }

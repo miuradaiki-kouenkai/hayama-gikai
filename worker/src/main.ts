@@ -134,11 +134,15 @@ async function main(): Promise<void> {
     const target = args.target as IngestMode | undefined;
     if (!target) {
       throw new Error(
-        'ingest mode requires --target=<sessions|bills|all> (e.g. --target=bills --era-year=7)'
+        'ingest mode requires --target=<sessions|bills|tags|all> (e.g. --target=bills --era-year=7)'
       );
     }
-    const eraYear = Number(args["era-year"]);
-    if (!Number.isInteger(eraYear) || eraYear < 1) {
+    const eraYearRaw = args["era-year"];
+    const eraYear = eraYearRaw === undefined ? undefined : Number(eraYearRaw);
+    if (
+      target !== "tags" &&
+      (eraYear === undefined || !Number.isInteger(eraYear) || eraYear < 1)
+    ) {
       throw new Error("ingest mode requires --era-year=<元号年> (e.g. --era-year=7)");
     }
     const monthRaw = args.month;
