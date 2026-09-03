@@ -136,7 +136,7 @@ export default async function Home() {
         {/* みらい議会とは セクション */}
         <About />
 
-        {/* チームみらいについて セクション */}
+        {/* 運営について セクション */}
         <TeamMirai />
 
         {/* 免責事項 */}
