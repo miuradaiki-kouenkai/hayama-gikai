@@ -8,7 +8,6 @@ import { BillTopicsPreviewSection } from "@/features/user-topic-analysis/server/
 import { getPublicTopicAnalysis } from "@/features/user-topic-analysis/server/loaders/get-public-topic-analysis";
 import { BillDetailClient } from "../../../client/components/bill-detail/bill-detail-client";
 import { BillDisclaimer } from "../../../client/components/bill-detail/bill-disclaimer";
-import { BillStatusProgress } from "../../../client/components/bill-detail/bill-status-progress";
 import { MiraiStanceCard } from "../../../client/components/bill-detail/mirai-stance-card";
 import type { BillWithContent } from "../../../shared/types";
 import { BillShareButtons } from "../share/bill-share-buttons";
@@ -56,14 +55,12 @@ export async function BillDetailLayout({
           topicCount={topicAnalysis?.topics.length ?? 0}
         />
         <Container>
-          {/* 議案ステータス進捗 */}
-          <div className="my-8">
-            <BillStatusProgress
-              status={bill.status}
-              originatingHouse={bill.originating_house}
-              statusNote={bill.status_note}
-            />
-          </div>
+          {/* 審議結果（一院制のため国会フローは出さない） */}
+          {bill.status_note && (
+            <div className="my-8 rounded-xl bg-mirai-gradient px-5 py-4 text-center text-xl font-bold text-mirai-text">
+              {bill.status_note}
+            </div>
+          )}
 
           <BillContent bill={bill} />
         </Container>
