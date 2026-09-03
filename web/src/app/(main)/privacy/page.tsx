@@ -152,9 +152,18 @@ export default function PrivacyPage() {
         <section className="space-y-4">
           <LegalSectionTitle>8. お問い合わせ窓口</LegalSectionTitle>
           <LegalParagraph>
-            個人情報の確認・修正・削除、またはみらい議会AIインタビュー機能の回答公開の停止等のご相談は、下記までご連絡ください。
+            個人情報の確認・修正・削除、またはみらい議会＠葉山町AIインタビュー機能の回答公開の停止等のご相談は、本サービスのGitHubリポジトリのIssueよりご連絡ください。
           </LegalParagraph>
-          <LegalParagraph>support@team-mir.ai</LegalParagraph>
+          <LegalParagraph>
+            <Link
+              href="https://github.com/miuradaiki-kouenkai/hayama-gikai/issues"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline underline-offset-2 hover:opacity-70 transition-opacity"
+            >
+              https://github.com/miuradaiki-kouenkai/hayama-gikai/issues
+            </Link>
+          </LegalParagraph>
         </section>
       </Container>
     </LegalPageLayout>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Container } from "@/components/layouts/container";
 import {
   LegalList,
@@ -160,9 +161,18 @@ export default function InterviewDataTermsPage() {
         <section className="space-y-4">
           <LegalSectionTitle>第11条（お問い合わせ）</LegalSectionTitle>
           <LegalParagraph>
-            本規約および本データに関するお問い合わせは、下記までご連絡ください。
+            本規約および本データに関するお問い合わせは、本サービスのGitHubリポジトリのIssueよりご連絡ください。
           </LegalParagraph>
-          <LegalParagraph>support@team-mir.ai</LegalParagraph>
+          <LegalParagraph>
+            <Link
+              href="https://github.com/miuradaiki-kouenkai/hayama-gikai/issues"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline underline-offset-2 hover:opacity-70 transition-opacity"
+            >
+              https://github.com/miuradaiki-kouenkai/hayama-gikai/issues
+            </Link>
+          </LegalParagraph>
         </section>
       </Container>
     </LegalPageLayout>
