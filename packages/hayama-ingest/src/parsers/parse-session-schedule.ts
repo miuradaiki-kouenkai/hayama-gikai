@@ -44,6 +44,7 @@ export function parseSessionSchedule(html: string): ParsedSessionSchedule {
   const seen = new Set<string>();
   let year = baseYear;
   let maxMonth = 0;
+  const normalized = toHalfWidth(toText(html));
   const datePattern = /(\d{1,2})\s*月\s*(\d{1,2})\s*日/g;
   for (const match of normalized.matchAll(datePattern)) {
     const month = Number(match[1]);

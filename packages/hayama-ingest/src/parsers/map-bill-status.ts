@@ -14,7 +14,7 @@ const ENACTED_DECISIONS = [
 ] as const;
 
 /** 否決系の結果 */
-const REJECTED_DECISIONS = ["否決", "不採択"] as const;
+const REJECTED_DECISIONS = ["否決", "不採択", "不認定"] as const;
 
 /**
  * 町サイトの結果欄から議案ステータスを決める。
@@ -33,7 +33,7 @@ export function toBillStatus(
   if ((REJECTED_DECISIONS as readonly string[]).includes(normalized)) {
     return "rejected";
   }
-  if (normalized === "継続審査") return "in_originating_house";
+  if (normalized.startsWith("継続")) return "in_originating_house";
   if (committee) return "in_originating_house";
   return "introduced";
 }
