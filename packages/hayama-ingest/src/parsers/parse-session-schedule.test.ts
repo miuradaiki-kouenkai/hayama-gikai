@@ -18,3 +18,14 @@ describe("parseSessionSchedule", () => {
     expect(schedule.dates[0]).toBe("2025-05-15");
   });
 });
+
+describe("parseMonthSchedule", () => {
+  it("2025年12月の会議日を読み取る", async () => {
+    const { parseMonthSchedule } = await import("./parse-session-schedule");
+    const schedule = parseMonthSchedule(readShiftJis("schedule-month-202512.html"));
+    expect(schedule.year).toBe(2025);
+    expect(schedule.month).toBe(12);
+    expect(schedule.dates[0]).toBe("2025-12-01");
+    expect(schedule.dates).toContain("2025-12-16");
+  });
+});
