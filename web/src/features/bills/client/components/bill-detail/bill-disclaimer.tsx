@@ -1,6 +1,3 @@
-import { LinkButton } from "@/components/top/link-button";
-import { EXTERNAL_LINKS } from "@/config/external-links";
-
 export function BillDisclaimer() {
   return (
     <div className="space-y-6 pt-4 pb-10">
@@ -20,17 +17,7 @@ export function BillDisclaimer() {
         </p>
       </div>
 
-      <LinkButton
-        href={EXTERNAL_LINKS.FAQ}
-        icon={{
-          src: "/icons/question-bubble.svg",
-          alt: "note",
-          width: 22,
-          height: 22,
-        }}
-      >
-        よくある質問
-      </LinkButton>
+      {/* よくある質問ボタン（一時非表示） */}
     </div>
   );
 }

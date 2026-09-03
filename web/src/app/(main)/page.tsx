@@ -1,5 +1,5 @@
 import { Container } from "@/components/layouts/container";
-import { About } from "@/components/top/about";
+// import { About } from "@/components/top/about"; // 一時非表示のため未使用
 import { ComingSoonSection } from "@/components/top/coming-soon-section";
 import { TeamMirai } from "@/components/top/team-mirai";
 import { isBuiltInChatEnabled } from "@/features/ask-ai/shared/built-in-chat";
@@ -133,8 +133,8 @@ export default async function Home() {
       )}
 
       <Container>
-        {/* みらい議会とは セクション */}
-        <About />
+        {/* みらい議会とは セクション（一時非表示） */}
+        {/* <About /> */}
 
         {/* 運営について セクション */}
         <TeamMirai />

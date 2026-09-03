@@ -8,7 +8,8 @@ import { getDietSessions } from "../loaders/get-diet-sessions";
 /** 定例会の一覧ページ。 */
 export async function SessionListPage() {
   const sessions = (await getDietSessions()).filter(
-    (session) => session.slug !== null
+    (session): session is typeof session & { slug: string } =>
+      session.slug !== null
   );
 
   return (

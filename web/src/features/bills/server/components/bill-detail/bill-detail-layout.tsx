@@ -44,72 +44,72 @@ export async function BillDetailLayout({
         - BillDetailClientでクライアントサイド機能（テキスト選択、チャット連携）を提供
         - このパターンによりSSRを保持しつつインタラクティブ機能を実装
       */}
-          <BillDetailClient
-            bill={bill}
-            currentDifficulty={currentDifficulty}
-            hasInterviewConfig={interviewConfig != null}
-          >
-            <BillDetailHeader
-              bill={bill}
-              hasInterviewConfig={interviewConfig != null}
-              opinionCount={topicAnalysis?.total_opinions ?? 0}
-              topicCount={topicAnalysis?.topics.length ?? 0}
+      <BillDetailClient
+        bill={bill}
+        currentDifficulty={currentDifficulty}
+        hasInterviewConfig={interviewConfig != null}
+      >
+        <BillDetailHeader
+          bill={bill}
+          hasInterviewConfig={interviewConfig != null}
+          opinionCount={topicAnalysis?.total_opinions ?? 0}
+          topicCount={topicAnalysis?.topics.length ?? 0}
+        />
+        <Container>
+          {/* 議案ステータス進捗 */}
+          <div className="my-8">
+            <BillStatusProgress
+              status={bill.status}
+              originatingHouse={bill.originating_house}
+              statusNote={bill.status_note}
             />
-            <Container>
-              {/* 議案ステータス進捗 */}
-              <div className="my-8">
-                <BillStatusProgress
-                  status={bill.status}
-                  originatingHouse={bill.originating_house}
-                  statusNote={bill.status_note}
-                />
-              </div>
+          </div>
 
-              <BillContent bill={bill} />
-            </Container>
-          </BillDetailClient>
+          <BillContent bill={bill} />
+        </Container>
+      </BillDetailClient>
 
-          <Container>
-            {/* 法案のトピック一覧（AIインタビュー意見の整理） */}
-            <div className="my-8">
-              <BillTopicsPreviewSection
-                billId={bill.id}
-                topics={topicAnalysis?.topics ?? []}
-                publicReportCount={publicReportsResult.totalCount}
-              />
-            </div>
-
-            {interviewConfig != null && (
-              <div className="my-8">
-                <InterviewLandingSection billId={bill.id} />
-              </div>
-            )}
-            {showMiraiStance && (
-              <div className="my-8">
-                <MiraiStanceCard
-                  stance={bill.mirai_stance}
-                  billStatus={bill.status}
-                />
-              </div>
-            )}
-            {/* シェアボタン */}
-            <div className="my-8">
-              <BillShareButtons bill={bill} />
-            </div>
-
-            {/* データの出典と免責事項 */}
-            <div className="my-8">
-              <BillDisclaimer />
-            </div>
-          </Container>
-
-          {/* 外部AIに聞く（フローティングボタン＋右パネル） */}
-          <AskAiFloat
-            billName={bill.name}
-            summary={bill.bill_content?.summary}
-            statusNote={bill.status_note}
-            pageUrl={pageUrl}
+      <Container>
+        {/* 法案のトピック一覧（AIインタビュー意見の整理） */}
+        <div className="my-8">
+          <BillTopicsPreviewSection
+            billId={bill.id}
+            topics={topicAnalysis?.topics ?? []}
+            publicReportCount={publicReportsResult.totalCount}
           />
+        </div>
+
+        {interviewConfig != null && (
+          <div className="my-8">
+            <InterviewLandingSection billId={bill.id} />
+          </div>
+        )}
+        {showMiraiStance && (
+          <div className="my-8">
+            <MiraiStanceCard
+              stance={bill.mirai_stance}
+              billStatus={bill.status}
+            />
+          </div>
+        )}
+        {/* シェアボタン */}
+        <div className="my-8">
+          <BillShareButtons bill={bill} />
+        </div>
+
+        {/* データの出典と免責事項 */}
+        <div className="my-8">
+          <BillDisclaimer />
+        </div>
+      </Container>
+
+      {/* 外部AIに聞く（フローティングボタン＋右パネル） */}
+      <AskAiFloat
+        billName={bill.name}
+        summary={bill.bill_content?.summary}
+        statusNote={bill.status_note}
+        pageUrl={pageUrl}
+      />
     </div>
   );
 }

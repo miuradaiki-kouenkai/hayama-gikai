@@ -68,9 +68,7 @@ export function AskAiFloat({
           className="fixed inset-x-0 bottom-0 z-50 bg-white shadow-md rounded-t-2xl flex flex-col max-h-[85dvh] overflow-y-auto md:bottom-4 md:right-4 md:left-auto md:w-[450px] md:rounded-2xl md:max-h-[80vh] p-5"
         >
           <div className="flex items-center justify-between gap-2">
-            <h2 className="text-lg font-bold text-black">
-              この議案をAIに聞く
-            </h2>
+            <h2 className="text-lg font-bold text-black">この議案をAIに聞く</h2>
             <Button
               type="button"
               variant="ghost"
