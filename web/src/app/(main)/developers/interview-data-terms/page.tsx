@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/layouts/container";
+import { env } from "@/lib/env";
+import { routes } from "@/lib/routes";
 import {
   LegalList,
   LegalPageLayout,
@@ -29,7 +31,7 @@ export default function InterviewDataTermsPage() {
         </LegalParagraph>
 
         <LegalParagraph>
-          本規約は、政治団体「チームみらい」（以下「当組織」といいます。）が運営する「みらい議会」のAIインタビュー機能（以下「みらい議会AIインタビュー機能」といいます。）を通じて取得した回答内容に基づき、当組織がオープンデータとして公開するデータセット（以下「本データ」といいます。）を、第三者（以下「利用者」といいます。）が利用するにあたっての条件を定めるものです。利用者は、本データをダウンロードまたは利用することにより、本規約に同意したものとみなされます。
+          本規約は、みらい議会＠葉山町の運営者（以下「当組織」といいます。）が運営する「みらい議会＠葉山町」のAIインタビュー機能（以下「みらい議会＠葉山町AIインタビュー機能」といいます。）を通じて取得した回答内容に基づき、当組織がオープンデータとして公開するデータセット（以下「本データ」といいます。）を、第三者（以下「利用者」といいます。）が利用するにあたっての条件を定めるものです。利用者は、本データをダウンロードまたは利用することにより、本規約に同意したものとみなされます。
         </LegalParagraph>
 
         <section className="space-y-4">
@@ -90,9 +92,9 @@ export default function InterviewDataTermsPage() {
           </LegalParagraph>
           <LegalList
             items={[
-              "データ出典：「みらい議会AIインタビュー（チームみらい）」",
-              "データ提供元URL：https://gikai.team-mir.ai/",
-              "本規約のURL：https://gikai.team-mir.ai/developers/interview-data-terms",
+              "データ出典：「みらい議会＠葉山町AIインタビュー」",
+              `データ提供元URL：${env.webUrl}/`,
+              `本規約のURL：${env.webUrl}${routes.interviewDataTerms()}`,
               {
                 id: "license",
                 content: (

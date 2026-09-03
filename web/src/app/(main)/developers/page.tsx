@@ -39,7 +39,7 @@ const links = [
     icon: Github,
     title: "GitHubリポジトリ",
     description:
-      "みらい議会のソースコード。フォークして自由にご活用いただけます。",
+      "みらい議会＠葉山町のソースコード。フォークして自由にご活用いただけます。",
     external: true,
   },
   {
