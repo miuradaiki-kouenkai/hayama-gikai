@@ -6,6 +6,10 @@ import {
 import { runBackfill } from "@mirai-gikai/topic-analysis-core/backfill";
 import { resolveBackfillParams } from "@mirai-gikai/topic-analysis-core/backfill-params";
 import { runTagBackfill } from "@mirai-gikai/topic-analysis-core/tag-backfill";
+import {
+  type IngestMode,
+  runIngest,
+} from "@mirai-gikai/hayama-ingest/ingest";
 
 /**
  * Cloud Run Job のエントリポイント。
@@ -22,11 +26,20 @@ import { runTagBackfill } from "@mirai-gikai/topic-analysis-core/tag-backfill";
  *   tsx src/main.ts --mode=tag-backfill                          # タグ未抽出の意見を全議案で処理
  *   tsx src/main.ts --mode=tag-backfill --bill-id=<uuid>         # 指定議案のタグ未抽出のみ
  *   tsx src/main.ts --mode=tag-backfill --bill-id=<uuid> --scope=all # 指定議案のタグを全件やり直し
+ *   tsx src/main.ts --mode=ingest --target=sessions --era-year=7            # 葉山町議会の会期
+ *   tsx src/main.ts --mode=ingest --target=bills --era-year=7               # 葉山町議会の議案
+ *   tsx src/main.ts --mode=ingest --target=bills --era-year=7 --month=6     # 6月定例会議だけ
+ *   tsx src/main.ts --mode=ingest --target=all --era-year=7                 # 会期・議案をまとめて
  *
  * 必須env: SUPABASE_URL, SUPABASE_SECRET_KEY, AI_GATEWAY_API_KEY
  */
 
-type Mode = "analyze" | "analyze-all" | "backfill" | "tag-backfill";
+type Mode =
+  | "analyze"
+  | "analyze-all"
+  | "backfill"
+  | "tag-backfill"
+  | "ingest";
 
 /** --strategy をパースする（未指定・不正値は fallback）。 */
 function parseStrategy(
@@ -115,8 +128,31 @@ async function main(): Promise<void> {
     return;
   }
 
+  // 葉山町議会の公開情報からの取込。ingest 自体はDB書き込みを行うため、
+  // SUPABASE_URL が localhost を指す開発環境での実行を想定する。
+  if (mode === "ingest") {
+    const target = args.target as IngestMode | undefined;
+    if (!target) {
+      throw new Error(
+        'ingest mode requires --target=<sessions|bills|all> (e.g. --target=bills --era-year=7)'
+      );
+    }
+    const eraYear = Number(args["era-year"]);
+    if (!Number.isInteger(eraYear) || eraYear < 1) {
+      throw new Error("ingest mode requires --era-year=<元号年> (e.g. --era-year=7)");
+    }
+    const monthRaw = args.month;
+    const month =
+      monthRaw === undefined ? undefined : Number(monthRaw);
+    if (month !== undefined && (!Number.isInteger(month) || month < 1 || month > 12)) {
+      throw new Error("ingest mode: --month は 1〜12 で指定する");
+    }
+    await runIngest({ mode: target, eraYear, month });
+    return;
+  }
+
   throw new Error(
-    `Unknown --mode=${mode ?? "(none)"} (expected "analyze" / "analyze-all" / "backfill" / "tag-backfill")`
+    `Unknown --mode=${mode ?? "(none)"} (expected "analyze" / "analyze-all" / "backfill" / "tag-backfill" / "ingest")`
   );
 }
 
