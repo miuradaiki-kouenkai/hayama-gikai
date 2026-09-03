@@ -1,5 +1,5 @@
 import { Container } from "@/components/layouts/container";
-import { AskAiPanel } from "@/features/ask-ai/client/components/ask-ai-panel";
+import { AskAiFloat } from "@/features/ask-ai/client/components/ask-ai-float";
 import type { DifficultyLevelEnum } from "@/features/bill-difficulty/shared/types";
 import { InterviewLandingSection } from "@/features/interview-config/client/components/interview-landing-section";
 import { getInterviewConfig } from "@/features/interview-config/server/loaders/get-interview-config";
@@ -95,15 +95,13 @@ export async function BillDetailLayout({
           <BillShareButtons bill={bill} />
         </div>
 
-        {/* 外部AIに聞く */}
-        <div className="my-8">
-          <AskAiPanel
-            billName={bill.name}
-            summary={bill.bill_content?.summary}
-            statusNote={bill.status_note}
-            pageUrl={new URL(routes.billDetail(bill.id), env.webUrl).toString()}
-          />
-        </div>
+        {/* 外部AIに聞く（フローティングボタン） */}
+        <AskAiFloat
+          billName={bill.name}
+          summary={bill.bill_content?.summary}
+          statusNote={bill.status_note}
+          pageUrl={new URL(routes.billDetail(bill.id), env.webUrl).toString()}
+        />
 
         {/* データの出典と免責事項 */}
         <div className="my-8">

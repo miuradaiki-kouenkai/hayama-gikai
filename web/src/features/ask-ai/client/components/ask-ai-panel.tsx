@@ -14,6 +14,8 @@ interface AskAiPanelProps {
   summary?: string | null;
   statusNote?: string | null;
   pageUrl: string;
+  /** ダイアログ内利用時は見出しを出さない */
+  hideHeading?: boolean;
 }
 
 async function copyToClipboard(text: string): Promise<boolean> {
@@ -44,6 +46,7 @@ export function AskAiPanel({
   summary,
   statusNote,
   pageUrl,
+  hideHeading = false,
 }: AskAiPanelProps) {
   const [question, setQuestion] = useState<string>(BILL_PRESET_QUESTIONS[0]);
   const [copied, setCopied] = useState(false);
@@ -67,10 +70,12 @@ export function AskAiPanel({
 
   return (
     <section aria-label="この議案をAIに聞く" className="flex flex-col gap-4">
-      <h2 className="text-[22px] font-bold text-black leading-[1.48] flex items-center gap-2">
-        <Sparkles className="h-5 w-5 text-primary-accent" aria-hidden />
-        この議案をAIに聞く
-      </h2>
+      {!hideHeading && (
+        <h2 className="text-[22px] font-bold text-black leading-[1.48] flex items-center gap-2">
+          <Sparkles className="h-5 w-5 text-primary-accent" aria-hidden />
+          この議案をAIに聞く
+        </h2>
+      )}
       <p className="text-xs text-mirai-text-secondary">
         普段使っているAIを選ぶと、議案の情報と質問文が入った状態で開きます。自分でコピーして貼り付けることもできます。
       </p>
