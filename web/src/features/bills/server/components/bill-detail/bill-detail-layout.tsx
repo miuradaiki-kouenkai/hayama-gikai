@@ -7,13 +7,13 @@ import { getInterviewConfig } from "@/features/interview-config/server/loaders/g
 import { getPublicReportsByBillId } from "@/features/interview-report/server/loaders/get-public-reports-by-bill-id";
 import { BillTopicsPreviewSection } from "@/features/user-topic-analysis/server/components/bill-topics-preview-section";
 import { getPublicTopicAnalysis } from "@/features/user-topic-analysis/server/loaders/get-public-topic-analysis";
+import { env } from "@/lib/env";
+import { routes } from "@/lib/routes";
 import { BillDetailClient } from "../../../client/components/bill-detail/bill-detail-client";
 import { BillDisclaimer } from "../../../client/components/bill-detail/bill-disclaimer";
 import { MiraiStanceCard } from "../../../client/components/bill-detail/mirai-stance-card";
 import type { BillWithContent } from "../../../shared/types";
 import { BillShareButtons } from "../share/bill-share-buttons";
-import { env } from "@/lib/env";
-import { routes } from "@/lib/routes";
 import { BillContent } from "./bill-content";
 import { BillDetailHeader } from "./bill-detail-header";
 

@@ -55,7 +55,7 @@ export function PreviousSessionSection({
       {/* セクションヘッダー（リンク付き） */}
       <div className="flex flex-col gap-1.5">
         <Link href={sessionBillsUrl as Route} className="group">
-          <h3 className="text-[22px] font-bold text-black leading-[1.48] flex items-center gap-1.5">
+          <h3 className="text-[22px] font-bold text-mirai-text leading-[1.48] flex items-center gap-1.5">
             <span className="flex items-center gap-4">
               {new Date(session.start_date).getFullYear()}年 {session.name}
               の提出議案

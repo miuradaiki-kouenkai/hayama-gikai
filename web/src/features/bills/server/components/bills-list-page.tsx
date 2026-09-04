@@ -14,8 +14,8 @@ import type { Route } from "next";
 import Link from "next/link";
 import { Container } from "@/components/layouts/container";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
-import { getDifficultyLevel } from "@/features/bill-difficulty/server/loaders/get-difficulty-level";
 import { isBuiltInChatEnabled } from "@/features/ask-ai/shared/built-in-chat";
+import { getDifficultyLevel } from "@/features/bill-difficulty/server/loaders/get-difficulty-level";
 import { HomeChatClient } from "@/features/chat/client/components/home-chat-client";
 import { routes } from "@/lib/routes";
 import { BillSearchCard } from "../../client/components/bill-list/bill-search-card";
@@ -107,7 +107,7 @@ export async function BillsListPage({
         <h1 className="mb-4 text-3xl font-bold">議案を検索する</h1>
 
         <form action={routes.billsList()} className="mb-5">
-          <div className="flex h-12 items-center gap-2.5 rounded-full border border-mirai-border bg-white pr-4 pl-5">
+          <div className="flex h-12 items-center gap-2.5 rounded-full border border-mirai-border bg-card pr-4 pl-5">
             <Search
               className="h-[18px] w-[18px] shrink-0 text-mirai-text-muted"
               aria-hidden
@@ -208,7 +208,7 @@ export async function BillsListPage({
             className={`flex h-[18px] w-[18px] items-center justify-center rounded-[5px] border ${
               params.interviewOnly
                 ? "border-transparent bg-mirai-gradient"
-                : "border-mirai-border-light bg-white"
+                : "border-mirai-border-light bg-card"
             }`}
             aria-hidden
           >
@@ -227,7 +227,7 @@ export async function BillsListPage({
         </div>
 
         {bills.length === 0 ? (
-          <div className="flex flex-col items-center gap-4 rounded-2xl border border-mirai-border bg-white px-6 py-16 text-center">
+          <div className="flex flex-col items-center gap-4 rounded-2xl border border-mirai-border bg-card px-6 py-16 text-center">
             <Search
               className="h-10 w-10 text-mirai-text-placeholder"
               aria-hidden
@@ -333,7 +333,7 @@ function Chip({
       className={`inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-[13px] font-bold whitespace-nowrap ${
         active
           ? "border-transparent bg-mirai-gradient text-mirai-text"
-          : "border-mirai-border bg-white text-mirai-text"
+          : "border-mirai-border bg-card text-mirai-text"
       }`}
     >
       {Icon && <Icon className="h-[15px] w-[15px] shrink-0" aria-hidden />}
