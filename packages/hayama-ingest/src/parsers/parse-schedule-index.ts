@@ -21,6 +21,16 @@ export type ParsedScheduleEntry = {
 
 const LINK_PATTERN = /<a\s[^>]*href="([^"]+)"[^>]*>(.*?)<\/a>/gs;
 
+/** href 内の実体参照を戻す（&amp; のままだと月指定が欠落し今月扱いになる）。 */
+function decodeHref(href: string): string {
+  return href
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'");
+}
+
 function cleanLabel(html: string): string {
   return toHalfWidth(html.replace(/<[^>]+>/g, "")).replace(/\s+/g, " ").trim();
 }
@@ -36,7 +46,7 @@ export function parseScheduleYearLinks(
   for (const match of html.matchAll(LINK_PATTERN)) {
     const label = cleanLabel(match[2]);
     if (!label.includes("定例会・臨時会日程")) continue;
-    const url = new URL(match[1], baseUrl).toString();
+    const url = new URL(decodeHref(match[1]), baseUrl).toString();
     if (found.has(url)) continue;
     const eraYear = label.match(/令和(\d{1,2})年/)?.[1];
     found.set(url, {
@@ -60,7 +70,7 @@ export function parseScheduleYearPage(
     const label = cleanLabel(match[2]);
     if (!label.includes("日程")) continue;
     if (!/(定例|臨時|招集)/.test(label)) continue;
-    const url = new URL(match[1], baseUrl).toString();
+    const url = new URL(decodeHref(match[1]), baseUrl).toString();
     if (!url.includes("gijiroku.com")) continue;
     if (found.has(url)) continue;
     found.set(url, { label, url });

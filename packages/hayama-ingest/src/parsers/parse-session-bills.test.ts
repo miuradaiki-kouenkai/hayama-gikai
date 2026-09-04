@@ -37,4 +37,30 @@ describe("parseSessionBills", () => {
       "https://www.town.hayama.lg.jp/material/files/group/27/7-6sanpi.pdf"
     );
   });
+
+  it("審議結果の文言から始まる行は議案として拾わない", () => {
+    const html = [
+      "<h2>町長提出議案</h2>",
+      "<table><caption>議案</caption>",
+      "<tr><th>議案番号</th><th>件名</th><th>結果</th></tr>",
+      "<tr><td>第1号</td><td>令和7年度一般会計予算</td><td>可決</td></tr>",
+      "<tr><td>継続</td><td>趣旨了承 令和7年 第2回定例会招集会議</td><td></td></tr>",
+      "</table>",
+    ].join("");
+    const { bills } = parseSessionBills(html);
+    expect(bills.map((b) => b.name)).toEqual(["令和7年度一般会計予算"]);
+  });
+
+  it("番号らしくない行は議案として拾わない", () => {
+    const html = [
+      "<h2>議会提出議案</h2>",
+      "<table><caption>意見書</caption>",
+      "<tr><th>議案番号</th><th>件名</th><th>結果</th></tr>",
+      "<tr><td>議会議案第7-2号</td><td>最低賃金の改善を求める意見書</td><td>可決</td></tr>",
+      "<tr><td>採択</td><td>令和8年 2月定例会議</td><td></td></tr>",
+      "</table>",
+    ].join("");
+    const { bills } = parseSessionBills(html);
+    expect(bills.map((b) => b.number)).toEqual(["議会議案第7-2号"]);
+  });
 });

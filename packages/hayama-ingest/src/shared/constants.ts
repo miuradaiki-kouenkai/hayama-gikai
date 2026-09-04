@@ -17,4 +17,4 @@ export function buildScheduleUrl(kaigiId: number): string {
 
 /** 日程ページの走査範囲（必要に応じて広げる） */
 export const SCHEDULE_KAIGI_ID_MIN = 30;
-export const SCHEDULE_KAIGI_ID_MAX = 70;
+export const SCHEDULE_KAIGI_ID_MAX = 100;

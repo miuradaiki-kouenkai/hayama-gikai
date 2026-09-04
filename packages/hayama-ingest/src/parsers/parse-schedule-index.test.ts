@@ -38,4 +38,16 @@ describe("parseScheduleYearPage", () => {
     );
     expect(byLabel.get("第1回定例会 日程")).toContain("Nittei_Month");
   });
+
+  it("href の &amp; を戻して月指定が欠落しない", () => {
+    const html = readFileSync(
+      join(FIXTURES, "schedule-year-r8.html"),
+      "utf-8"
+    );
+    const entries = parseScheduleYearPage(html);
+    const byLabel = new Map(entries.map((e) => [e.label, e.url]));
+    // &amp; のままだと M1 が欠落し今月扱いになる
+    expect(byLabel.get("1月臨時会議 日程")).toContain("M1=1");
+    expect(byLabel.get("1月臨時会議 日程")).not.toContain("amp;");
+  });
 });

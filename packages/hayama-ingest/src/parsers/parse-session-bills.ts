@@ -15,6 +15,9 @@ const TABLE_PATTERN = /<table[^>]*>(.*?)<\/table>/gs;
 const ROW_PATTERN = /<tr[^>]*>(.*?)<\/tr>/gs;
 const CELL_PATTERN = /<t[dh][^>]*>(.*?)<\/t[dh]>/gs;
 const HREF_PATTERN = /<a[^>]*href="([^"]+)"[^>]*>/;
+/** 件名欄に紛れ込んだ審議結果の文言（rowspan の取り違え対策）。 */
+const RESULT_HEAD_PATTERN =
+  /^(可決|否決|採択|不採択|趣旨了承|継続|同意|認定|不認定|承認|報告|審議中|撤回)/;
 const VOTE_PDF_PATTERN =
   /<a[^>]*href="([^"]*sanpi[^"]*\.pdf)"[^>]*>/;
 
@@ -121,11 +124,15 @@ export function parseSessionBills(
         const number = hasHeader ? at(indexOf("議案番号")) : at(0);
         // 見出し行の取り残し・空行は捨てる
         if (!number || number.includes("議案番号")) continue;
+        // 番号らしくない行（結果セルの取り違え）は捨てる
+        if (!number.includes("号")) continue;
 
         const nameCell = hasHeader ? cells[indexOf("件名")] : cells[1];
         if (nameCell === undefined) continue;
         const name = toText(nameCell);
         if (!name) continue;
+        // 結果セルの取り違え（例: "趣旨了承 令和7年 第2回定例会招集会議"）は捨てる
+        if (RESULT_HEAD_PATTERN.test(name)) continue;
         const docMatch = nameCell.match(HREF_PATTERN);
         const documentUrl = docMatch
           ? new URL(docMatch[1], baseUrl).toString()
