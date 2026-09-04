@@ -1,10 +1,16 @@
 import { HayamaSiteClient } from "./fetchers/hayama-site-client";
 import { ingestBills } from "./services/ingest-bills";
+import { ingestContents } from "./services/ingest-contents";
 import { ingestSessions } from "./services/ingest-sessions";
 import { ingestTags } from "./services/ingest-tags";
 
 export { ingestBills } from "./services/ingest-bills";
 export type { IngestBillsParams, IngestBillsResult } from "./services/ingest-bills";
+export { ingestContents } from "./services/ingest-contents";
+export type {
+  IngestContentsParams,
+  IngestContentsResult,
+} from "./services/ingest-contents";
 export { ingestSessions } from "./services/ingest-sessions";
 export { ingestTags } from "./services/ingest-tags";
 export type { IngestTagsParams, IngestTagsResult } from "./services/ingest-tags";
@@ -13,7 +19,7 @@ export type {
   IngestSessionsResult,
 } from "./services/ingest-sessions";
 
-export type IngestMode = "sessions" | "bills" | "tags" | "all";
+export type IngestMode = "sessions" | "bills" | "tags" | "contents" | "all";
 
 export type IngestOptions = {
   mode: IngestMode;
@@ -50,5 +56,9 @@ export async function runIngest(options: IngestOptions): Promise<void> {
   if (options.mode === "tags" || options.mode === "all") {
     const stats = await ingestTags({ eraYear: options.eraYear });
     console.log(`タグの取込完了:`, JSON.stringify(stats));
+  }
+  if (options.mode === "contents" || options.mode === "all") {
+    const stats = await ingestContents({ eraYear: options.eraYear });
+    console.log(`解説の取込完了:`, JSON.stringify(stats));
   }
 }

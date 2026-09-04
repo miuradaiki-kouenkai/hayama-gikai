@@ -134,7 +134,7 @@ async function main(): Promise<void> {
     const target = args.target as IngestMode | undefined;
     if (!target) {
       throw new Error(
-        'ingest mode requires --target=<sessions|bills|tags|all> (e.g. --target=bills --era-year=7)'
+        'ingest mode requires --target=<sessions|bills|tags|contents|all> (e.g. --target=bills --era-year=7)'
       );
     }
     const eraYearRaw = args["era-year"];
