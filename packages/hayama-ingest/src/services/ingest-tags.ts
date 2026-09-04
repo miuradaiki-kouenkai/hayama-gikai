@@ -22,11 +22,17 @@ export async function ingestTags(
   const supabase = createAdminClient();
 
   const tagIds = new Map<string, string>();
-  for (const rule of TAG_KEYWORD_RULES) {
+  for (let i = 0; i < TAG_KEYWORD_RULES.length; i++) {
+    const rule = TAG_KEYWORD_RULES[i];
     const { data, error } = await supabase
       .from("tags")
       .upsert(
-        { label: rule.label, description: rule.description },
+        {
+          label: rule.label,
+          description: rule.description,
+          // 並び順がそのまま注目タグの優先度になる
+          featured_priority: i + 1,
+        },
         { onConflict: "label" }
       )
       .select("id")
