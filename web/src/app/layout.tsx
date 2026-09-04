@@ -3,6 +3,7 @@ import type { Metadata, Viewport } from "next";
 import { Lexend_Giga, Noto_Sans_JP, Noto_Serif_JP } from "next/font/google";
 import NextTopLoader from "nextjs-toploader";
 import type { ReactNode } from "react";
+import { ThemeProvider } from "@/components/theme/theme-provider";
 import { env } from "@/lib/env";
 
 const notoSansJP = Noto_Sans_JP({
@@ -99,12 +100,12 @@ export default function RootLayout({
   children: ReactNode;
 }>) {
   return (
-    <html lang="ja">
+    <html lang="ja" suppressHydrationWarning>
       <body
         className={`${notoSansJP.variable} ${lexendGiga.variable} ${notoSerifJP.variable} font-sans antialiased bg-mirai-surface-light`}
       >
         <NextTopLoader showSpinner={false} color="#005dcb" />
-        {children}
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   );
