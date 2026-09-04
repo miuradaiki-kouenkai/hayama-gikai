@@ -82,7 +82,7 @@ export function BillShareModal({
       onKeyDown={handleBackgroundKeyDown}
       tabIndex={-1}
     >
-      <div className="bg-white rounded-2xl p-7 w-[370px] max-w-full flex flex-col items-center gap-9">
+      <div className="bg-card rounded-2xl p-7 w-[370px] max-w-full flex flex-col items-center gap-9">
         {/* タイトル */}
         <h2 className="text-xl font-bold text-gray-800 text-center w-full">
           記事を共有する

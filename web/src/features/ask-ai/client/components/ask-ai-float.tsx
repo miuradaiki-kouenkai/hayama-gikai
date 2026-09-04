@@ -28,10 +28,12 @@ export function AskAiFloat({
   return (
     <section
       aria-label="この議案をAIに聞く"
-      className="hidden md:flex fixed bottom-4 right-4 z-50 w-[450px] max-h-[80vh] overflow-y-auto bg-white shadow-md rounded-2xl flex-col p-5"
+      className="hidden md:flex fixed bottom-4 right-4 z-50 w-[450px] max-h-[80vh] overflow-y-auto bg-card shadow-md rounded-2xl flex-col p-5"
     >
       <div className="flex items-center justify-between gap-2">
-        <h2 className="text-lg font-bold text-black">この議案をAIに聞く</h2>
+        <h2 className="text-lg font-bold text-mirai-text">
+          この議案をAIに聞く
+        </h2>
         <Button
           type="button"
           variant="ghost"

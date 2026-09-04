@@ -71,7 +71,7 @@ export function AskAiPanel({
   return (
     <section aria-label="この議案をAIに聞く" className="flex flex-col gap-4">
       {!hideHeading && (
-        <h2 className="text-[22px] font-bold text-black leading-[1.48] flex items-center gap-2">
+        <h2 className="text-[22px] font-bold text-mirai-text leading-[1.48] flex items-center gap-2">
           <Sparkles className="h-5 w-5 text-primary-accent" aria-hidden />
           この議案をAIに聞く
         </h2>
@@ -109,7 +109,7 @@ export function AskAiPanel({
         rows={8}
         value={prompt}
         onFocus={(event) => event.target.select()}
-        className="w-full rounded-lg border border-mirai-border bg-white p-3 text-sm leading-relaxed text-black"
+        className="w-full rounded-lg border border-mirai-border bg-card p-3 text-sm leading-relaxed text-mirai-text"
       />
 
       <div className="flex flex-wrap gap-2">
