@@ -22,15 +22,20 @@ export async function ingestContents(
 
   const { data: bills, error: billsError } = await supabase
     .from("bills")
-    .select("id,name,status_note,shugiin_url,diet_sessions!inner(slug)");
+    .select(
+      "id,name,status_note,shugiin_url,diet_sessions!inner(slug,shugiin_url)"
+    );
   if (billsError) throw new Error(`議案の取得に失敗した: ${billsError.message}`);
 
   let billCount = 0;
   let rowCount = 0;
   for (const bill of bills ?? []) {
-    const slug = (
-      bill as unknown as { diet_sessions: { slug: string } | null }
-    ).diet_sessions?.slug;
+    const session = (
+      bill as unknown as {
+        diet_sessions: { slug: string; shugiin_url: string | null } | null;
+      }
+    ).diet_sessions;
+    const slug = session?.slug;
     if (
       params.eraYear !== undefined &&
       slug !== undefined &&
@@ -43,6 +48,7 @@ export async function ingestContents(
       name: bill.name,
       statusNote: bill.status_note,
       pdfUrl: bill.shugiin_url,
+      sourceUrl: session?.shugiin_url,
     });
     for (const [level, content] of [
       ["normal", built.normal],

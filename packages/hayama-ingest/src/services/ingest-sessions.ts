@@ -4,6 +4,7 @@ import {
   parseMonthSchedule,
   parseSessionSchedule,
 } from "../parsers/parse-session-schedule";
+import { parseTownSchedule } from "../parsers/parse-town-schedule";
 import {
   parseScheduleYearLinks,
   parseScheduleYearPage,
@@ -39,14 +40,19 @@ async function sleep(ms: number): Promise<void> {
   await new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-/** 日程URLから会議日の一覧を取る（会期別・月別の両形式に対応）。 */
+/** 日程URLから会議日の一覧を取る（会期別・月別・町サイト表の形式に対応）。 */
 async function fetchScheduleDates(
   client: HayamaSiteClient,
-  url: string
+  url: string,
+  eraYear: number
 ): Promise<string[]> {
   if (url.includes("Nittei_Month")) {
     const html = await client.fetchShiftJisText(url);
     return parseMonthSchedule(html).dates;
+  }
+  if (!url.includes("gijiroku.com")) {
+    const html = await client.fetchText(url);
+    return parseTownSchedule(html, eraYear).dates;
   }
   const html = await client.fetchShiftJisText(url);
   return parseSessionSchedule(html).dates;
@@ -75,7 +81,7 @@ export async function ingestSessions(
       const yearPage = await client.fetchText(yearLink.url);
       for (const entry of parseScheduleYearPage(yearPage)) {
         try {
-          const dates = await fetchScheduleDates(client, entry.url);
+          const dates = await fetchScheduleDates(client, entry.url, params.eraYear);
           if (dates.length > 0) {
             officialDates.set(sessionMatchKey(entry.label), dates);
           }

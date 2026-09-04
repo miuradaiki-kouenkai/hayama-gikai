@@ -22,6 +22,8 @@ export function buildContents(input: {
   name: string;
   statusNote: string | null;
   pdfUrl: string | null;
+  /** 審議結果の出典（会期の議案一覧ページ）。省略時は付けない */
+  sourceUrl?: string | null;
 }): BuiltContents {
   const title = toDisplayTitle(input.name);
   const result = input.statusNote ?? "審議中";
@@ -39,6 +41,9 @@ export function buildContents(input: {
     `- [町サイトの議案資料](${pdf})`,
     ``,
   ].join("\n");
+  const resultLine = input.sourceUrl
+    ? `- 審議結果: ${result}（[出典](${input.sourceUrl})）`
+    : `- 審議結果: ${result}`;
   const hard = [
     normal,
     `## 詳しく読む`,
@@ -46,7 +51,7 @@ export function buildContents(input: {
     `この議案の原文書（PDF）は、葉山町議会の公開資料で読めます。`,
     ``,
     `- [議案資料PDF](${pdf})`,
-    `- 審議結果: ${result}`,
+    resultLine,
     ``,
   ].join("\n");
   return { title, summary, normal, hard };

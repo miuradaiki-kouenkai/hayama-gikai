@@ -1,5 +1,6 @@
 import { Container } from "@/components/layouts/container";
 import { AskAiFloat } from "@/features/ask-ai/client/components/ask-ai-float";
+import { isBuiltInChatEnabled } from "@/features/ask-ai/shared/built-in-chat";
 import type { DifficultyLevelEnum } from "@/features/bill-difficulty/shared/types";
 import { InterviewLandingSection } from "@/features/interview-config/client/components/interview-landing-section";
 import { getInterviewConfig } from "@/features/interview-config/server/loaders/get-interview-config";
@@ -100,13 +101,16 @@ export async function BillDetailLayout({
         </div>
       </Container>
 
-      {/* 外部AIに聞く（フローティングボタン＋右パネル） */}
-      <AskAiFloat
-        billName={bill.name}
-        summary={bill.bill_content?.summary}
-        statusNote={bill.status_note}
-        pageUrl={pageUrl}
-      />
+      {/* 外部AIに聞く（フローティングボタン＋右パネル）。
+          内蔵チャット有効時はダイアログと被るため出さない */}
+      {!isBuiltInChatEnabled() && (
+        <AskAiFloat
+          billName={bill.name}
+          summary={bill.bill_content?.summary}
+          statusNote={bill.status_note}
+          pageUrl={pageUrl}
+        />
+      )}
     </div>
   );
 }

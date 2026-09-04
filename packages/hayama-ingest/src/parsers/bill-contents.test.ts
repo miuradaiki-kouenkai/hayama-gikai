@@ -42,4 +42,16 @@ describe("buildContents", () => {
     expect(built.summary).toContain("（審議中）");
     expect(built.normal).toContain("https://www.town.hayama.lg.jp/gikai/");
   });
+
+  it("出典URLがあるときは審議結果にリンクを付ける", () => {
+    const built = buildContents({
+      name: "第9号 令和7年度下水道事業会計予算",
+      statusNote: "予算特別委員会を経て、本会議で可決",
+      pdfUrl: "https://example.invalid/gian.pdf",
+      sourceUrl: "https://www.town.hayama.lg.jp/gikai/2_1/r2_5/15561.html",
+    });
+    expect(built.hard).toContain(
+      "- 審議結果: 予算特別委員会を経て、本会議で可決（[出典](https://www.town.hayama.lg.jp/gikai/2_1/r2_5/15561.html)）"
+    );
+  });
 });

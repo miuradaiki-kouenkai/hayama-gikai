@@ -70,8 +70,13 @@ export function parseScheduleYearPage(
     const label = cleanLabel(match[2]);
     if (!label.includes("日程")) continue;
     if (!/(定例|臨時|招集)/.test(label)) continue;
+    // 一覧への戻りリンク（例: "定例会・臨時会日程"）を除く
+    if (!/(第\d+回|\d+月|招集)/.test(label)) continue;
     const url = new URL(decodeHref(match[1]), baseUrl).toString();
-    if (!url.includes("gijiroku.com")) continue;
+    // 議会中継の日程か、町サイトの日程表ページ（令和4年以前の形式）
+    if (!url.includes("gijiroku.com") && !url.includes("teireirinjinittei")) {
+      continue;
+    }
     if (found.has(url)) continue;
     found.set(url, { label, url });
   }
