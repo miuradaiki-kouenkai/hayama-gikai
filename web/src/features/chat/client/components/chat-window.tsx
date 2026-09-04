@@ -241,7 +241,7 @@ export function ChatWindow({
       <div className="px-6 pb-4 pt-2">
         <PromptInput
           onSubmit={handleSubmit}
-          className="flex items-end gap-2.5 py-2 pl-6 pr-4 bg-white rounded-[50px] border-mirai-gradient divide-y-0"
+          className="flex items-end gap-2.5 py-2 pl-6 pr-4 bg-card rounded-[50px] border-mirai-gradient divide-y-0"
         >
           <PromptInputBody className="flex-1">
             <PromptInputTextarea
@@ -287,7 +287,7 @@ export function ChatWindow({
     return createPortal(
       <section
         aria-label="葉山町議会や議案についてAIに質問する"
-        className={`fixed inset-x-0 bottom-0 z-50 bg-white shadow-md rounded-t-2xl flex flex-col pc:h-[70vh] xl:right-[calc(calc(100%-1180px)/2)] ${CHAT_PANEL_RESPONSIVE_CLASSES}`}
+        className={`fixed inset-x-0 bottom-0 z-50 bg-card shadow-md rounded-t-2xl flex flex-col pc:h-[70vh] xl:right-[calc(calc(100%-1180px)/2)] ${CHAT_PANEL_RESPONSIVE_CLASSES}`}
       >
         {chatPanelContent}
       </section>,

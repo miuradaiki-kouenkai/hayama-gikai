@@ -6,8 +6,8 @@ import { Button } from "@/components/ui/button";
 
 /** ヘッダー用のライト/ダーク切替ボタン。 */
 export function ThemeToggle() {
-  const { theme, setTheme } = useTheme();
-  const dark = theme === "dark";
+  const { resolvedTheme, setTheme } = useTheme();
+  const dark = resolvedTheme === "dark";
 
   return (
     <Button

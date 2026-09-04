@@ -47,7 +47,9 @@ export async function GET(request: NextRequest) {
       <div style={{ fontSize: 56, fontWeight: 800, color: "#1f2937" }}>
         {shorten(title, 42)}
       </div>
-      <div style={{ fontSize: 28, color: "#404040" }}>{shorten(status, 36)}</div>
+      <div style={{ fontSize: 28, color: "#404040" }}>
+        {shorten(status, 36)}
+      </div>
     </div>,
     { width: 1200, height: 630 }
   );
