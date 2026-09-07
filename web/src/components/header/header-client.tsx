@@ -42,8 +42,8 @@ export function HeaderClient({ difficultyLevel }: HeaderClientProps) {
               <Image
                 src="/img/logo.svg"
                 alt="みらい議会＠葉山町"
-                width={42}
-                height={36}
+                width={40}
+                height={40}
               />
               <Image
                 src="/img/service-logo.svg"

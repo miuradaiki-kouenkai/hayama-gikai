@@ -29,7 +29,7 @@ export function MiraiStanceCard({ stance, billStatus }: MiraiStanceCardProps) {
             {/* ヘッダー部分：ロゴとスタンスバッジ */}
             <div className="flex flex-col items-center gap-8">
               {/* みらい議会＠葉山町ロゴ */}
-              <div className="relative w-37 h-31">
+              <div className="relative w-37 h-37">
                 <Image
                   src="/img/logo.svg"
                   alt="みらい議会＠葉山町"

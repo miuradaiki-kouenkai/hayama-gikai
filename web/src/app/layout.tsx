@@ -33,8 +33,8 @@ const siteDescription =
 const siteName = "みらい議会＠葉山町";
 const ogImage = {
   url: "/ogp.jpg",
-  width: 1200,
-  height: 630,
+  width: 2400,
+  height: 1260,
   alt: "みらい議会＠葉山町のOGPイメージ",
 };
 

@@ -219,7 +219,7 @@ export async function GET(request: Request) {
           <img
             alt="みらい議会＠葉山町ロゴ"
             src={logoDataUrl}
-            width={189}
+            width={160}
             height={160}
             style={{
               position: "absolute",

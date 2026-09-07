@@ -36,7 +36,7 @@ export async function GET(request: NextRequest) {
           style={{
             width: 56,
             height: 56,
-            borderRadius: 16,
+            borderRadius: 28,
             backgroundColor: "#005dcb",
           }}
         />

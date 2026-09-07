@@ -4,6 +4,8 @@
 
 これらの要件は AGPL-3.0 第7条 (c)(d)(e) に基づく追加条件です。
 
+**葉山町版のブランド資産**（ロゴ、OGP 画像、PWA アイコン、ワードマーク）は AGPL-3.0 の対象外です。詳細は [LICENSE-ASSETS.md](./LICENSE-ASSETS.md) を参照してください。チームみらいのロゴと同様、fork 先では使用せず、必ず独自の資産に差し替えてください。
+
 ## 必須要件
 
 ### 1. サービス名称
@@ -15,9 +17,10 @@
 
 ### 2. ロゴの変更
 
-- **チームみらいのロゴは使用しないでください**
-- `web/public/img/logo.svg` および `web/public/img/ogp-logo.png` を独自のロゴに差し替えてください
+- **チームみらいのロゴ、およびみらい議会＠葉山町のロゴは使用しないでください**
+- `web/public/img/logo.svg`、`web/public/img/logo-icon.svg`、`web/public/img/service-logo.svg`、`web/public/img/ogp-logo.png` を独自のロゴに差し替えてください
 - favicon やPWAアイコン（`web/public/icons/`）も独自のものに変更してください
+- これらのファイルは [LICENSE-ASSETS.md](./LICENSE-ASSETS.md) の対象であり、AGPL-3.0 では再許諾されません
 
 ### 3. トップ画像の変更
 
@@ -60,6 +63,8 @@
 | テーマカラー | `web/src/app/globals.css` | `--primary`, `--primary-accent` 等 |
 | テーマカラー | `web/src/app/layout.tsx` | `themeColor` |
 | ロゴ | `web/public/img/logo.svg` | 独自ロゴに差し替え |
+| ロゴ（PWA） | `web/public/img/logo-icon.svg` | 独自ロゴに差し替え |
+| ワードマーク | `web/public/img/service-logo.svg` | 独自ロゴに差し替え |
 | ロゴ（OGP） | `web/public/img/ogp-logo.png` | 独自ロゴに差し替え |
 | ヒーロー画像 | `web/public/img/hero_background.png` | 独自画像に差し替え |
 | OGP 画像 | `web/public/ogp.jpg` | 独自画像に差し替え |
@@ -72,7 +77,7 @@
 
 - **第7条 (c)**: 改変版が元のバージョンとは異なることを合理的な方法で示すことを要求できます。サービス名称の変更やロゴの差し替えはこの条項に該当します。
 - **第7条 (d)**: ライセンサーや作者の名前を宣伝目的で使用することを制限できます。チームみらいの名前やロゴを無断で利用したマーケティングはこの条項により制限されます。
-- **第7条 (e)**: 商標権に基づく権利の付与を拒否できます。「チームみらい」の商標を fork 版で使用する権利は付与されません。
+- **第7条 (e)**: 商標権に基づく権利の付与を拒否できます。「チームみらい」および「みらい議会＠葉山町」の商標・ブランド資産を fork 版で使用する権利は付与されません。葉山町版の対象ファイルは [LICENSE-ASSETS.md](./LICENSE-ASSETS.md) を参照してください。
 
 AGPL-3.0 が保証するソースコードの自由な利用・改変・再配布の権利は一切制限されません。本ガイドラインはあくまで本家サービスとの混同を防ぐためのものです。
 

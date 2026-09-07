@@ -35,7 +35,7 @@ function FooterLogoSection() {
           src="/img/logo.svg"
           alt="みらい議会＠葉山町"
           width={150}
-          height={128}
+          height={150}
           className="h-auto"
         />
       </Link>
