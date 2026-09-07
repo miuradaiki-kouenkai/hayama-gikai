@@ -205,17 +205,26 @@ export async function findTagsByBillIds(
     return new Map();
   }
 
+  // PostgREST の URL 上限に当たらないよう分割して取得する
+  const CHUNK_SIZE = 100;
   const supabase = createAdminClient();
-  const { data, error } = await supabase
-    .from("bills_tags")
-    .select("bill_id, tags(id, label)")
-    .in("bill_id", billIds);
+  const rows: Array<{
+    bill_id: string;
+    tags: { id: string; label: string } | null;
+  }> = [];
+  for (let i = 0; i < billIds.length; i += CHUNK_SIZE) {
+    const { data, error } = await supabase
+      .from("bills_tags")
+      .select("bill_id, tags(id, label)")
+      .in("bill_id", billIds.slice(i, i + CHUNK_SIZE));
 
-  if (error) {
-    throw new Error(`Failed to fetch tags: ${error.message}`);
+    if (error) {
+      throw new Error(`Failed to fetch tags: ${error.message}`);
+    }
+    rows.push(...(data ?? []));
   }
 
-  return groupTagsByBillId(data ?? []);
+  return groupTagsByBillId(rows);
 }
 
 // ============================================================
@@ -543,17 +552,23 @@ export async function findBillIdsWithPublicInterview(
     return new Set();
   }
 
+  // PostgREST の URL 上限に当たらないよう分割して取得する
+  const CHUNK_SIZE = 100;
   const supabase = createAdminClient();
-  const { data, error } = await supabase
-    .from("interview_configs")
-    .select("bill_id")
-    .in("bill_id", billIds)
-    .eq("status", "public");
+  const found = new Set<string>();
+  for (let i = 0; i < billIds.length; i += CHUNK_SIZE) {
+    const { data, error } = await supabase
+      .from("interview_configs")
+      .select("bill_id")
+      .in("bill_id", billIds.slice(i, i + CHUNK_SIZE))
+      .eq("status", "public");
 
-  if (error) {
-    console.error("Failed to fetch interview configs:", error);
-    return new Set();
+    if (error) {
+      console.error("Failed to fetch interview configs:", error);
+      return new Set();
+    }
+    for (const row of data ?? []) found.add(row.bill_id);
   }
 
-  return new Set(data.map((row) => row.bill_id));
+  return found;
 }

@@ -18,114 +18,112 @@ type InterviewMessageInsert =
 type InterviewReportInsert =
   Database["public"]["Tables"]["interview_report"]["Insert"];
 
-// 国会会期データ
+// 葉山町議会の会期データ
 export const dietSessions: DietSessionInsert[] = [
   {
-    name: "第219回国会（臨時会）",
-    slug: "219-rinji",
-    shugiin_url:
-      "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/menu.htm",
-    start_date: "2025-10-21",
-    end_date: "2025-12-17",
+    name: "葉山町議会 令和7年第4回定例会（12月）",
+    slug: "hayama-r7-4",
+    shugiin_url: "https://www.town.hayama.lg.jp/gikai/",
+    start_date: "2025-12-01",
+    end_date: "2025-12-19",
   },
   {
-    name: "第218回国会（臨時会）",
-    slug: "218-rinji",
-    shugiin_url:
-      "https://www.shugiin.go.jp/internet/itdb_gian.nsf/html/gian/menu.htm",
-    start_date: "2025-08-01",
-    end_date: "2025-08-05",
+    name: "葉山町議会 令和7年第3回定例会（9月）",
+    slug: "hayama-r7-3",
+    shugiin_url: "https://www.town.hayama.lg.jp/gikai/",
+    start_date: "2025-09-01",
+    end_date: "2025-09-30",
   },
 ];
 
 // タグデータ
 export const tags: TagInsert[] = [
   {
-    label: "エネルギー・環境",
-    description: "エネルギー政策、環境保護、気候変動対策に関する法案",
+    label: "環境・海・みどり",
+    description: "海岸保全、ごみ・リサイクル、緑地保全に関する議案",
     featured_priority: 1,
   },
   {
     label: "子育て・教育",
-    description: "子育て支援、教育政策、若者支援に関する法案",
+    description: "子育て支援、教育政策、若者支援に関する議案",
     featured_priority: 2,
   },
   {
-    label: "選挙・政治改革",
-    description: "選挙制度、政治改革、民主主義の強化に関する法案",
+    label: "交通・まちづくり",
+    description: "コミュニティバス、道路、空き家対策、まちづくりに関する議案",
     featured_priority: 3,
   },
 ];
 
 export const bills: BillInsert[] = [
   {
-    name: "ガソリン税暫定税率廃止法案",
+    name: "葉山町一般会計補正予算",
     originating_house: "HR",
     status: "in_originating_house",
-    status_note: "衆議院で審議中",
+    status_note: "葉山町議会で審議中",
     submitted_date: "2025-08-01T09:00:00+09:00",
     publish_status: "published",
     is_featured: true,
     thumbnail_url: "https://placehold.co/600x400.png",
   },
   {
-    name: "こども家庭庁予算大幅増額法案",
+    name: "葉山町子ども・子育て支援条例の一部改正",
     originating_house: "HC",
     status: "enacted",
-    status_note: "両院で可決、成立",
+    status_note: "本会議で可決、成立",
     submitted_date: "2025-01-20T10:00:00+09:00",
     publish_status: "published",
     is_featured: true,
     thumbnail_url: "https://placehold.co/600x400.png",
   },
   {
-    name: "18歳選挙権完全実施法案",
+    name: "葉山海岸周辺駐車場対策条例",
     originating_house: "HR",
     status: "rejected",
-    status_note: "衆議院で否決",
+    status_note: "本会議で否決",
     submitted_date: "2025-02-01T09:00:00+09:00",
     publish_status: "published",
     is_featured: false,
     thumbnail_url: "https://placehold.co/600x400.png",
   },
   {
-    name: "学校給食無償化促進法案",
+    name: "学校給食無償化の継続に関する条例",
     originating_house: "HC",
     status: "enacted",
-    status_note: "両院で可決、4月から実施",
+    status_note: "本会議で可決、4月から実施",
     submitted_date: "2025-01-10T09:00:00+09:00",
     publish_status: "published",
     is_featured: false,
     thumbnail_url: "https://placehold.co/600x400.png",
   },
-  // 第218回国会用の追加法案（デザイン確認用）- ループで生成
+  // デザイン確認用の追加議案 - ループで生成
   ...Array.from({ length: 4 }, (_, i) => ({
-    name: `学校給食無償化促進法案（第${i + 2}号）`,
+    name: `葉山町空き家対策推進条例（第${i + 2}号）`,
     originating_house: (i % 2 === 0 ? "HR" : "HC") as "HR" | "HC",
     status: (i % 2 === 0 ? "enacted" : "in_originating_house") as
       | "enacted"
       | "in_originating_house",
-    status_note: i % 2 === 0 ? "両院で可決、成立" : "参議院で審議中",
+    status_note: i % 2 === 0 ? "本会議で可決、成立" : "葉山町議会で審議中",
     submitted_date: `2025-08-0${i + 1}T09:00:00+09:00`,
     publish_status: "published" as const,
     is_featured: false,
     thumbnail_url: "https://placehold.co/600x400.png",
   })),
   {
-    name: "船荷証券の電子化に関する法律案",
+    name: "コミュニティバス実証運行に関する条例",
     originating_house: "HR",
     status: "in_originating_house",
-    status_note: "衆議院で審議中",
+    status_note: "葉山町議会で審議中",
     submitted_date: "2025-09-15T09:00:00+09:00",
     publish_status: "published",
     is_featured: false,
     thumbnail_url: "https://placehold.co/600x400.png",
   },
   {
-    name: "中学生・高校生向けプログラミング教育必修化法案",
+    name: "防災・避難所整備基金条例",
     originating_house: "HR",
     status: "rejected",
-    status_note: "衆議院本会議で否決",
+    status_note: "本会議で否決",
     submitted_date: "2024-11-15T10:00:00+09:00",
     publish_status: "published",
     is_featured: false,
@@ -134,26 +132,26 @@ export const bills: BillInsert[] = [
 ];
 
 // 議案とタグの関連付け
-// billsの順番: [ガソリン税, こども家庭庁, 18歳選挙権, 学校給食, プログラミング教育]
-// tagsの順番: [エネルギー・環境, 子育て・教育, 選挙・政治改革]
+// billsの順番: [補正予算, 子育て支援条例, 駐車場対策, 学校給食, 防災基金]
+// tagsの順番: [環境・海・みどり, 子育て・教育, 交通・まちづくり]
 export function createBillsTags(
   insertedBills: { id: string; name: string }[],
   insertedTags: { id: string; label: string }[]
 ): Omit<BillsTagsInsert, "id" | "created_at">[] {
   const billTagMap: { [billName: string]: string[] } = {
-    "ガソリン税暫定税率廃止法案": ["エネルギー・環境"],
-    "こども家庭庁予算大幅増額法案": ["子育て・教育"],
-    "18歳選挙権完全実施法案": ["選挙・政治改革"],
-    "学校給食無償化促進法案": ["子育て・教育"],
-    // 第218回国会用の追加法案（デザイン確認用）
+    "葉山町一般会計補正予算": ["交通・まちづくり"],
+    "葉山町子ども・子育て支援条例の一部改正": ["子育て・教育"],
+    "葉山海岸周辺駐車場対策条例": ["環境・海・みどり"],
+    "学校給食無償化の継続に関する条例": ["子育て・教育"],
+    // デザイン確認用の追加議案
     ...Object.fromEntries(
       Array.from({ length: 4 }, (_, i) => [
-        `学校給食無償化促進法案（第${i + 2}号）`,
-        ["子育て・教育"],
+        `葉山町空き家対策推進条例（第${i + 2}号）`,
+        ["交通・まちづくり"],
       ])
     ),
-    "船荷証券の電子化に関する法律案": ["エネルギー・環境"],
-    "中学生・高校生向けプログラミング教育必修化法案": ["子育て・教育"],
+    "コミュニティバス実証運行に関する条例": ["交通・まちづくり"],
+    "防災・避難所整備基金条例": ["環境・海・みどり"],
   };
 
   const billsTags: Omit<BillsTagsInsert, "id" | "created_at">[] = [];
@@ -176,57 +174,55 @@ export function createBillsTags(
 
 const miraiStancesData: Omit<MiraiStanceInsert, "bill_id">[] = [
   {
-    // ガソリン税暫定税率廃止法案に対する見解
+    // 葉山町一般会計補正予算に対する見解
     type: "for",
-    comment: `私たちは、家計の負担を軽くするこの法案に賛成します。
+    comment: `私たちは、物価高騰の中で町民生活を支えるこの補正予算に賛成します。
 
-特に車が必要な地方の人たちには大きなメリットがあります。ただし、環境問題や道路整備の予算についても同時に考える必要があります。
-
-電気自動車の普及促進など、環境に優しい対策もセットで進めるべきです。`,
+特に子育て世帯や小規模事業者への支援は、葉山の暮らしを守る上で重要です。ただし、基金残高や将来負担についても同時に説明が必要です。`,
   },
   {
-    // こども家庭庁予算大幅増額法案に対する見解
+    // 葉山町子ども・子育て支援条例の一部改正に対する見解
     type: "for",
-    comment: `少子化対策は国の最重要課題の一つです。この法案による児童手当の増額と保育の無償化は、子育て世代の経済的負担を大幅に軽減します。
+    comment: `少子化が進む葉山町において、子育て支援の充実は最重要課題の一つです。この条例改正による支援の拡充は、子育て世代の経済的負担を軽減します。
 
-特に第3子以降への手厚い支援は、出生率向上に効果的だと考えます。財源確保についても企業の子ども支援金など、社会全体で支える仕組みが評価できます。`,
+特に保育の受け皿確保と相談体制の強化は、共働き世帯の多い葉山に効果的だと考えます。`,
   },
   {
-    // 18歳選挙権完全実施法案に対する見解
+    // 葉山海岸周辺駐車場対策条例に対する見解
     type: "for",
-    comment: `18歳選挙権が導入されても、若者の投票率が低いままでは意味がありません。
+    comment: `夏の海水浴シーズンの渋滞・迷惑駐車は、葉山の長年の課題です。
 
-この法案による主権者教育の充実と投票環境の改善は、民主主義の質を高める重要な取り組みです。デジタルネイティブ世代に合わせた情報提供の現代化も評価できます。`,
+この条例による駐車場の適正配置と案内表示の改善は、住民生活と観光の両立に向けた重要な取り組みです。海岸利用者のマナー啓発と合わせた運用を求めます。`,
   },
   {
-    // 学校給食無償化促進法案に対する見解
+    // 学校給食無償化の継続に関する条例に対する見解
     type: "for",
     comment: `学校給食の無償化は、子育て支援と教育の充実を同時に実現する重要な政策です。
 
 全ての子どもが質の高い食事を平等に受けられることは、健康格差の解消にもつながります。地産地消の推進により地域経済の活性化も期待できます。`,
   },
   {
-    // 船荷証券の電子化に関する法律案に対する見解
+    // コミュニティバス実証運行に関する条例に対する見解
     type: "conditional_for",
-    comment: `国際海運のデジタル化は避けられない潮流であり、電子船荷証券の法整備は重要です。
+    comment: `高齢化が進む葉山町において、移動手段の確保は避けられない課題であり、コミュニティバスの実証運行は重要です。
 
-ただし、中小フォワーダーや地方港湾事業者への技術支援・移行期間の確保が不十分であれば、実務上の混乱を招く恐れがあります。
+ただし、利用実績の乏しい路線を漫然と継続すれば、財政負担だけが残る恐れがあります。
 
-国際条約（MLETR）との整合性を保ちつつ、段階的な導入と十分なサポート体制の構築を条件に賛成します。`,
+利用データを公開しつつ、段階的な路線見直しと十分な周知を条件に賛成します。`,
   },
-  // 第218回国会用の追加法案（デザイン確認用）- 同じ見解を4件追加
+  // デザイン確認用の追加議案 - 同じ見解を4件追加
   ...Array.from({ length: 4 }, () => ({
     type: "for" as const,
-    comment: `学校給食の無償化は、子育て支援と教育の充実を同時に実現する重要な政策です。
+    comment: `空き家の増加は、防災・防犯の面でも葉山町の課題です。
 
-全ての子どもが質の高い食事を平等に受けられることは、健康格差の解消にもつながります。地産地消の推進により地域経済の活性化も期待できます。`,
+この条例による相談体制の整備と利活用の促進は、まちの安全と景観を守る重要な取り組みです。所有者の事情に配慮した丁寧な運用を求めます。`,
   })),
   {
-    // プログラミング教育必修化法案に対する見解
+    // 防災・避難所整備基金条例に対する見解
     type: "against",
-    comment: `デジタル人材の育成は重要ですが、準備不足での拙速な必修化には反対です。
+    comment: `防災対策の充実は重要ですが、使途の定めが曖昧なまま基金だけを積むことには反対です。
 
-教員の養成、設備の整備、カリキュラムの検討など、十分な準備期間が必要です。段階的な導入を検討し、質の高いプログラミング教育を実現すべきです。`,
+避難所の耐震化、備蓄の更新、要支援者の避難計画など、具体策と必要額を先に示し、段階的な積み立てを検討すべきです。`,
   },
 ];
 
@@ -239,7 +235,7 @@ export function createMiraiStances(
   }));
 }
 
-// インタビュー設定を作成（最初の法案用）
+// インタビュー設定を作成（最初の議案用）
 export function createInterviewConfig(
   insertedBills: { id: string; name: string }[]
 ): Omit<InterviewConfigInsert, "id" | "created_at" | "updated_at"> | null {
@@ -261,7 +257,7 @@ export function createInterviewQuestions(
   return [
     {
       interview_config_id: interviewConfigId,
-      question: "この法案に賛成ですか？反対ですか？",
+      question: "この議案に賛成ですか？反対ですか？",
       follow_up_guide: "ユーザーの立場を明確にしてください。",
       quick_replies: ["賛成", "反対", "どちらでもない"],
       question_order: 1,
@@ -349,15 +345,15 @@ export function createInterviewMessages(
   const conversations = [
     // パターン1: 賛成（完了 + レポートあり）
     [
-      { role: "assistant" as const, content: "この法案に賛成ですか？反対ですか？" },
+      { role: "assistant" as const, content: "この議案に賛成ですか？反対ですか？" },
       { role: "user" as const, content: "賛成です" },
       { role: "assistant" as const, content: "その理由を教えてください。" },
-      { role: "user" as const, content: "なぜなら賛成だからです。国民のためになると思います。" },
+      { role: "user" as const, content: "なぜなら賛成だからです。町民のためになると思います。" },
       { role: "assistant" as const, content: "ありがとうございました。ご意見を承りました。" },
     ],
     // パターン2: 反対（完了 + レポートあり）
     [
-      { role: "assistant" as const, content: "この法案に賛成ですか？反対ですか？" },
+      { role: "assistant" as const, content: "この議案に賛成ですか？反対ですか？" },
       { role: "user" as const, content: "反対です" },
       { role: "assistant" as const, content: "その理由を教えてください。" },
       { role: "user" as const, content: "財源が不明確だと思います。" },
@@ -365,7 +361,7 @@ export function createInterviewMessages(
     ],
     // パターン3: どちらでもない（完了 + レポートあり）
     [
-      { role: "assistant" as const, content: "この法案に賛成ですか？反対ですか？" },
+      { role: "assistant" as const, content: "この議案に賛成ですか？反対ですか？" },
       { role: "user" as const, content: "どちらでもないです" },
       { role: "assistant" as const, content: "その理由を教えてください。" },
       { role: "user" as const, content: "もっと情報が必要だと思います。" },
@@ -373,15 +369,15 @@ export function createInterviewMessages(
     ],
     // パターン4: 完了したけどレポート未作成
     [
-      { role: "assistant" as const, content: "この法案に賛成ですか？反対ですか？" },
+      { role: "assistant" as const, content: "この議案に賛成ですか？反対ですか？" },
       { role: "user" as const, content: "賛成です" },
       { role: "assistant" as const, content: "その理由を教えてください。" },
-      { role: "user" as const, content: "良い法案だと思います。" },
+      { role: "user" as const, content: "良い議案だと思います。" },
       { role: "assistant" as const, content: "ありがとうございました。ご意見を承りました。" },
     ],
     // パターン5: 進行中（途中で離脱）
     [
-      { role: "assistant" as const, content: "この法案に賛成ですか？反対ですか？" },
+      { role: "assistant" as const, content: "この議案に賛成ですか？反対ですか？" },
       { role: "user" as const, content: "うーん、ちょっと考えさせてください" },
     ],
   ];
@@ -412,28 +408,28 @@ export function createInterviewReports(
     {
       stance: "for" as const,
       summary:
-        "この法案は国民生活の安定に寄与する重要な施策であり、賛成の立場をとる。特に物価高騰に苦しむ家庭への経済的支援効果が大きく、社会保障の充実と合わせて早期の成立を望む。",
+        "この議案は葉山町の暮らしの安定に寄与する重要な施策であり、賛成の立場をとる。特に物価高騰に苦しむ家庭への経済的支援効果が大きく、子育て支援の充実と合わせて早期の成立を望む。",
       role: "general_citizen" as const,
-      role_title: "一般市民",
-      role_description: "法案の内容に賛同する市民",
-      opinions: [{ title: "賛成理由", content: "国民のためになる" }],
+      role_title: "一般町民",
+      role_description: "議案の内容に賛同する町民",
+      opinions: [{ title: "賛成理由", content: "町民のためになる" }],
     },
     {
       stance: "against" as const,
       summary:
-        "財源の確保が不透明であり、将来世代への負担増大が懸念されるため反対の立場をとる。歳出削減や他の財源確保策を十分に検討した上で、持続可能な制度設計を行うべきだと考える。",
+        "財源の確保が不透明であり、将来世代への負担増大が懸念されるため反対の立場をとる。歳出の見直しや他の財源確保策を十分に検討した上で、持続可能な制度設計を行うべきだと考える。",
       role: "work_related" as const,
       role_title: "会社員",
-      role_description: "財政面を懸念する市民",
+      role_description: "財政面を懸念する町民",
       opinions: [{ title: "反対理由", content: "財源が不明確" }],
     },
     {
       stance: "neutral" as const,
       summary:
-        "現時点では法案の効果と副作用について十分な情報が開示されておらず、賛否を判断するには時期尚早と考える。特に地方経済への影響や長期的な財政見通しについてより詳細な分析が必要。",
+        "現時点では議案の効果と影響について十分な情報が開示されておらず、賛否を判断するには時期尚早と考える。特に町民生活への影響や長期的な財政見通しについてより詳細な説明が必要。",
       role: "subject_expert" as const,
       role_title: "専門家",
-      role_description: "慎重な判断を求める市民",
+      role_description: "慎重な判断を求める町民",
       opinions: [{ title: "態度保留理由", content: "情報不足" }],
     },
   ];
@@ -498,24 +494,24 @@ export function createDemoMessages(): Omit<
       interview_session_id: DEMO_SESSION_ID,
       role: "assistant",
       content:
-        "こんにちは！本日はインタビューにご協力いただきありがとうございます。\n\nチームみらいは今後1年で達成することをまとめた「1年プラン」を策定しようとしています。今後のチームみらいに期待する内容や、アイデア、意見について率直なご意見をお聞かせください。今後、チームみらいはどのようなことを達成してゆくと良いと思いますか？",
+        "こんにちは！本日はインタビューにご協力いただきありがとうございます。\n\n葉山町の今後のまちづくりについて、率直なご意見をお聞かせください。今後、葉山町はどのようなことを達成してゆくと良いと思いますか？",
     },
     {
       interview_session_id: DEMO_SESSION_ID,
       role: "user",
-      content: "国会や省庁デジタル化や、ムダの削減を達成して欲しい",
+      content: "町役場や議会のデジタル化や、ムダの削減を達成して欲しい",
     },
     {
       interview_session_id: DEMO_SESSION_ID,
       role: "assistant",
       content:
-        "なるほど。省庁のレスポンス速度の向上と、官僚の長時間労働の削減を通じて、より優秀な人材が官僚志望になる好循環を期待されているということですね。とても重要な指摘だと思います。\n\nそうした官僚の働き方改革や人材確保という視点から見たとき、チームみらいの100日プランで実現した「みらい議会」や「みらいまるみえ政治資金」といった取り組みは、今のあなたの期待にどの程度応えていると評価されますか？",
+        "なるほど。役場のレスポンス速度の向上と、職員の負担軽減を通じて、よりよい行政サービスにつながる好循環を期待されているということですね。とても重要な指摘だと思います。\n\nそうした行政の働き方改革という視点から見たとき、議会の情報をわかりやすく伝える「みらい議会＠葉山町」のような取り組みは、今のあなたの期待にどの程度応えていると評価されますか？",
     },
     {
       interview_session_id: DEMO_SESSION_ID,
       role: "user",
       content:
-        "省庁のレスポンスの速さや、官僚の長時間労働が削減され、よりよい人材が官僚になっていく事を期待しています。",
+        "役場のレスポンスの速さや、議会の議論が見えるようになることを期待しています。",
     },
     {
       interview_session_id: DEMO_SESSION_ID,
@@ -532,16 +528,16 @@ export function createDemoReport(): InterviewReportInsert {
     interview_session_id: DEMO_SESSION_ID,
     stance: "neutral",
     summary:
-      "デジタル化推進による省庁の業務効率化や官僚の働き方改革には期待するが、システム移行時の混乱や中小フォワーダーへの対応コスト増大について懸念も大きい。慎重な段階的導入を求める。",
+      "役場業務のデジタル化や職員の働き方改革には期待するが、システム移行時の混乱や高齢者への対応について懸念も大きい。慎重な段階的導入を求める。",
     role: "subject_expert",
-    role_title: "フォワーダー",
+    role_title: "町内事業者",
     role_description:
-      "中国航路担当のフォワーダー実務者\n業界経験20年\n船荷証券（B/L）手続きに日常的に関与",
+      "葉山町内の事業者\n役所手続きのデジタル化に関心\n窓口業務の改善を期待",
     opinions: [
       {
-        title: "国会や省庁デジタル化や、ムダの削減を達成して欲しい",
+        title: "町役場や議会のデジタル化や、ムダの削減を達成して欲しい",
         content:
-          "省庁のレスポンスの速さや、官僚の長時間労働が削減され、よりよい人材が官僚になっていく事を期待している。",
+          "役場のレスポンスの速さや、議会の議論が見えるようになることを期待している。",
       },
     ],
     is_public_by_user: true,
@@ -594,17 +590,17 @@ export function createAdditionalDemoMessages(): Omit<
     {
       interview_session_id: DEMO_SESSION_ID_WORK,
       role: "user",
-      content: "ガソリン価格の高騰で物流コストが上がっています。この法案には賛成です。",
+      content: "物価高騰で仕入れコストが上がっています。この補正予算には賛成です。",
     },
     {
       interview_session_id: DEMO_SESSION_ID_WORK,
       role: "assistant",
-      content: "物流業界で働かれている立場からのご意見ですね。具体的にどのような影響がありますか？",
+      content: "町内でお仕事をされている立場からのご意見ですね。具体的にどのような影響がありますか？",
     },
     {
       interview_session_id: DEMO_SESSION_ID_WORK,
       role: "user",
-      content: "運送会社を経営していますが、燃料費が経営を圧迫しています。暫定税率廃止で少しでも負担が減れば助かります。",
+      content: "飲食店を経営していますが、食材費や光熱費が経営を圧迫しています。支援が少しでもあれば助かります。",
     },
     {
       interview_session_id: DEMO_SESSION_ID_WORK,
@@ -620,17 +616,17 @@ export function createAdditionalDemoMessages(): Omit<
     {
       interview_session_id: DEMO_SESSION_ID_DAILY,
       role: "user",
-      content: "地方在住で車が生活必需品なので、ガソリン代が下がるのは嬉しいです。",
+      content: "葉山は坂が多く車が手放せないので、物価高対策の支援は嬉しいです。",
     },
     {
       interview_session_id: DEMO_SESSION_ID_DAILY,
       role: "assistant",
-      content: "生活への影響が大きいとのことですね。どのような場面で車を使われますか？",
+      content: "生活への影響が大きいとのことですね。どのような場面で負担を感じますか？",
     },
     {
       interview_session_id: DEMO_SESSION_ID_DAILY,
       role: "user",
-      content: "通勤や買い物、子供の送り迎えなど、毎日使っています。公共交通機関がほとんどない地域なので。",
+      content: "通勤や買い物、子供の送り迎えなど、毎日車を使っています。ガソリン代も上がっているので。",
     },
     {
       interview_session_id: DEMO_SESSION_ID_DAILY,
@@ -646,17 +642,17 @@ export function createAdditionalDemoMessages(): Omit<
     {
       interview_session_id: DEMO_SESSION_ID_CITIZEN,
       role: "user",
-      content: "環境問題も気になりますが、今の物価高を考えると減税は必要だと思います。",
+      content: "環境問題も気になりますが、今の物価高を考えると支援は必要だと思います。",
     },
     {
       interview_session_id: DEMO_SESSION_ID_CITIZEN,
       role: "assistant",
-      content: "環境と経済のバランスを考えていらっしゃるのですね。どのような点が気になりますか？",
+      content: "環境と家計のバランスを考えていらっしゃるのですね。どのような点が気になりますか？",
     },
     {
       interview_session_id: DEMO_SESSION_ID_CITIZEN,
       role: "user",
-      content: "ガソリン車から電気自動車への移行も進めつつ、当面の生活支援として減税があってもいいと思います。",
+      content: "海岸の環境を守りつつ、当面の生活支援として予算をつけてもいいと思います。",
     },
     {
       interview_session_id: DEMO_SESSION_ID_CITIZEN,
@@ -674,16 +670,16 @@ export function createAdditionalDemoReports(): InterviewReportInsert[] {
       interview_session_id: DEMO_SESSION_ID_WORK,
       stance: "for",
       summary:
-        "燃料費高騰が運送業界の経営を直撃しており、暫定税率の廃止による物流コスト削減は急務。トラック1台あたりの年間燃料費が数十万円単位で変わるため、経営の持続可能性に直結する重要な施策だ。",
+        "食材費や光熱費の高騰が町内飲食店の経営を直撃しており、補正予算による支援は急務。支援の拡充は店舗の存続に直結する重要な施策だ。",
       role: "work_related",
-      role_title: "運送会社経営者",
+      role_title: "飲食店経営者",
       role_description:
-        "運送会社経営者\n従業員50名規模\n燃料費高騰の影響を直接受けている",
+        "葉山町内の飲食店経営者\n従業員5名規模\n物価高騰の影響を直接受けている",
       opinions: [
         {
-          title: "燃料費が経営を圧迫している",
+          title: "仕入れコストが経営を圧迫している",
           content:
-            "運送会社を経営しているが、燃料費が経営を圧迫している。暫定税率廃止で少しでも負担が減れば助かる。",
+            "飲食店を経営しているが、食材費や光熱費が経営を圧迫している。支援が少しでもあれば助かる。",
         },
       ],
       is_public_by_user: true,
@@ -694,16 +690,16 @@ export function createAdditionalDemoReports(): InterviewReportInsert[] {
       interview_session_id: DEMO_SESSION_ID_DAILY,
       stance: "for",
       summary:
-        "公共交通機関がほぼない地方では車は唯一の移動手段であり、ガソリン代の軽減は生活に直結する問題。子育て世帯として送迎や買い物で毎日車を使うため、家計への負担軽減を強く望んでいる。",
+        "坂の多い葉山では車は生活必需品であり、物価高対策の支援は生活に直結する問題。子育て世帯として送迎や買い物で毎日車を使うため、家計への負担軽減を強く望んでいる。",
       role: "daily_life_affected",
       role_title: "主婦",
       role_description:
-        "地方在住の主婦\n車が唯一の移動手段\n子育て中で送り迎えに車を使用",
+        "葉山在住の主婦\n車が生活必需品\n子育て中で送り迎えに車を使用",
       opinions: [
         {
           title: "車が生活必需品",
           content:
-            "通勤や買い物、子供の送り迎えなど毎日車を使っている。公共交通機関がほとんどない地域なのでガソリン代が下がると助かる。",
+            "通勤や買い物、子供の送り迎えなど毎日車を使っている。ガソリン代も上がっているので支援があると助かる。",
         },
       ],
       is_public_by_user: true,
@@ -714,15 +710,15 @@ export function createAdditionalDemoReports(): InterviewReportInsert[] {
       interview_session_id: DEMO_SESSION_ID_CITIZEN,
       stance: "neutral",
       summary:
-        "ガソリン税減税は短期的な家計支援になるが、環境負荷の観点からは化石燃料への依存を長引かせる可能性もある。EV普及支援策と組み合わせた総合的なエネルギー政策として検討すべきだと考える。",
+        "補正予算による支援は短期的な家計支援になるが、海岸環境への配慮も欠かせない。環境保全と生活支援を組み合わせた総合的な町政として検討すべきだと考える。",
       role: "general_citizen",
       role_title: "会社員",
-      role_description: "会社員\n環境問題に関心あり\n電気自動車への乗り換えを検討中",
+      role_description: "会社員\n環境問題に関心あり\n海岸清掃ボランティアに参加",
       opinions: [
         {
-          title: "環境と経済のバランス",
+          title: "環境と家計のバランス",
           content:
-            "ガソリン車から電気自動車への移行も進めつつ、当面の生活支援として減税があってもいいと考える。",
+            "海岸の環境を守りつつ、当面の生活支援として予算をつけてもいいと考える。",
         },
       ],
       is_public_by_user: true,

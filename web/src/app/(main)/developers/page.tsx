@@ -13,9 +13,9 @@ import { EXTERNAL_LINKS } from "@/config/external-links";
 import { routes } from "@/lib/routes";
 
 export const metadata: Metadata = {
-  title: "開発者向け | みらい議会",
+  title: "開発者向け | みらい議会＠葉山町",
   description:
-    "みらい議会のオープンデータAPIなど、開発者・研究者向けの情報をまとめています。",
+    "みらい議会＠葉山町のオープンデータAPIなど、開発者・研究者向けの情報をまとめています。",
 };
 
 const links = [
@@ -39,7 +39,7 @@ const links = [
     icon: Github,
     title: "GitHubリポジトリ",
     description:
-      "みらい議会のソースコード。フォークして自由にご活用いただけます。",
+      "みらい議会＠葉山町のソースコード。フォークして自由にご活用いただけます。",
     external: true,
   },
   {
@@ -102,7 +102,7 @@ export default function DevelopersPage() {
           </header>
 
           <p className="text-[15px] leading-loose tracking-wide text-mirai-text-subtle">
-            みらい議会では、AIインタビューに寄せられた法案への意見を、誰でも分析・活用できるオープンデータとして公開しています。
+            みらい議会＠葉山町では、AIインタビューに寄せられた議案への意見を、誰でも分析・活用できるオープンデータとして公開しています。
           </p>
 
           <div className="flex flex-col border-t border-neutral-200">

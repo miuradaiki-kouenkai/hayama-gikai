@@ -1,7 +1,8 @@
 import { Container } from "@/components/layouts/container";
-import { About } from "@/components/top/about";
+// import { About } from "@/components/top/about"; // 一時非表示のため未使用
 import { ComingSoonSection } from "@/components/top/coming-soon-section";
 import { TeamMirai } from "@/components/top/team-mirai";
+import { isBuiltInChatEnabled } from "@/features/ask-ai/shared/built-in-chat";
 import { getDifficultyLevel } from "@/features/bill-difficulty/server/loaders/get-difficulty-level";
 import { BillDisclaimer } from "@/features/bills/client/components/bill-detail/bill-disclaimer";
 import { BillSearchOverlay } from "@/features/bills/client/components/bill-search-overlay";
@@ -132,24 +133,26 @@ export default async function Home() {
       )}
 
       <Container>
-        {/* みらい議会とは セクション */}
-        <About />
+        {/* みらい議会とは セクション（一時非表示） */}
+        {/* <About /> */}
 
-        {/* チームみらいについて セクション */}
+        {/* 運営について セクション */}
         <TeamMirai />
 
         {/* 免責事項 */}
         <BillDisclaimer />
       </Container>
 
-      {/* チャット機能 */}
-      <HomeChatClient
-        currentDifficulty={currentDifficulty}
-        bills={billsByTag
-          .flatMap((x) => x.bills)
-          .concat(featuredBills)
-          .map(toBillChatContext)}
-      />
+      {/* チャット機能（無効時は外部AI導線のみ） */}
+      {isBuiltInChatEnabled() && (
+        <HomeChatClient
+          currentDifficulty={currentDifficulty}
+          bills={billsByTag
+            .flatMap((x) => x.bills)
+            .concat(featuredBills)
+            .map(toBillChatContext)}
+        />
+      )}
     </>
   );
 }

@@ -17,12 +17,12 @@ export async function generateMetadata({ params }: Props) {
   const session = await getDietSessionBySlug(slug);
 
   if (!session) {
-    return { title: "国会会期が見つかりません" };
+    return { title: "議会会期が見つかりません" };
   }
 
   return {
-    title: `${session.name}の法案一覧 | みらい議会`,
-    description: `${session.name}（${session.start_date}〜${session.end_date}）に提出された法案の一覧です。`,
+    title: `${session.name}の議案一覧 | みらい議会＠葉山町`,
+    description: `${session.name}（${session.start_date}〜${session.end_date}）に提出された議案の一覧です。`,
   };
 }
 

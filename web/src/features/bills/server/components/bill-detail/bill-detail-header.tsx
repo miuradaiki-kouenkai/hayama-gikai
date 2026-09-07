@@ -37,7 +37,7 @@ export async function BillDetailHeader({
   const { shareUrl, shareMessage, thumbnailUrl } = await getBillShareData(bill);
 
   return (
-    <div className="mb-8 bg-white rounded-b-4xl">
+    <div className="mb-8 bg-card rounded-b-4xl">
       {bill.thumbnail_url ? (
         <div className="relative w-full h-72 md:h-80">
           <Image
@@ -50,7 +50,7 @@ export async function BillDetailHeader({
           />
         </div>
       ) : (
-        <div className="w-full h-20 bg-white-100" />
+        <div className="w-full h-20 bg-card" />
       )}
 
       <div className="px-4 pt-8 mb-3">
@@ -66,7 +66,11 @@ export async function BillDetailHeader({
           </h1>
         )}
         <div className="flex flex-row gap-4">
-          <BillStatusBadge status={bill.status} className="w-fit" />
+          <BillStatusBadge
+            status={bill.status}
+            statusNote={bill.status_note}
+            className="w-fit"
+          />
           <div className="flex items-center gap-2 text-xs font-medium text-muted-foreground">
             {bill.submitted_date && (
               <time>{formatDateWithDots(bill.submitted_date)} 提出</time>

@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Container } from "@/components/layouts/container";
+import { env } from "@/lib/env";
+import { routes } from "@/lib/routes";
 import {
   LegalList,
   LegalPageLayout,
@@ -8,9 +11,9 @@ import {
 } from "@/components/layouts/legal-page-layout";
 
 export const metadata: Metadata = {
-  title: "みらい議会AIインタビューデータ利用規約 | みらい議会",
+  title: "みらい議会＠葉山町AIインタビューデータ利用規約 | みらい議会＠葉山町",
   description:
-    "みらい議会のAIインタビューデータをオープンデータとして利用するにあたっての条件を定めています。",
+    "みらい議会＠葉山町のAIインタビューデータをオープンデータとして利用するにあたっての条件を定めています。",
 };
 
 const CC_BY_LICENSE_URL = "https://creativecommons.org/licenses/by/4.0/deed.ja";
@@ -28,7 +31,7 @@ export default function InterviewDataTermsPage() {
         </LegalParagraph>
 
         <LegalParagraph>
-          本規約は、政治団体「チームみらい」（以下「当組織」といいます。）が運営する「みらい議会」のAIインタビュー機能（以下「みらい議会AIインタビュー機能」といいます。）を通じて取得した回答内容に基づき、当組織がオープンデータとして公開するデータセット（以下「本データ」といいます。）を、第三者（以下「利用者」といいます。）が利用するにあたっての条件を定めるものです。利用者は、本データをダウンロードまたは利用することにより、本規約に同意したものとみなされます。
+          本規約は、みらい議会＠葉山町の運営者（以下「当組織」といいます。）が運営する「みらい議会＠葉山町」のAIインタビュー機能（以下「みらい議会＠葉山町AIインタビュー機能」といいます。）を通じて取得した回答内容に基づき、当組織がオープンデータとして公開するデータセット（以下「本データ」といいます。）を、第三者（以下「利用者」といいます。）が利用するにあたっての条件を定めるものです。利用者は、本データをダウンロードまたは利用することにより、本規約に同意したものとみなされます。
         </LegalParagraph>
 
         <section className="space-y-4">
@@ -89,9 +92,9 @@ export default function InterviewDataTermsPage() {
           </LegalParagraph>
           <LegalList
             items={[
-              "データ出典：「みらい議会AIインタビュー（チームみらい）」",
-              "データ提供元URL：https://gikai.team-mir.ai/",
-              "本規約のURL：https://gikai.team-mir.ai/developers/interview-data-terms",
+              "データ出典：「みらい議会＠葉山町AIインタビュー」",
+              `データ提供元URL：${env.webUrl}/`,
+              `本規約のURL：${env.webUrl}${routes.interviewDataTerms()}`,
               {
                 id: "license",
                 content: (
@@ -160,9 +163,18 @@ export default function InterviewDataTermsPage() {
         <section className="space-y-4">
           <LegalSectionTitle>第11条（お問い合わせ）</LegalSectionTitle>
           <LegalParagraph>
-            本規約および本データに関するお問い合わせは、下記までご連絡ください。
+            本規約および本データに関するお問い合わせは、本サービスのGitHubリポジトリのIssueよりご連絡ください。
           </LegalParagraph>
-          <LegalParagraph>support@team-mir.ai</LegalParagraph>
+          <LegalParagraph>
+            <Link
+              href="https://github.com/miuradaiki-kouenkai/hayama-gikai/issues"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline underline-offset-2 hover:opacity-70 transition-opacity"
+            >
+              https://github.com/miuradaiki-kouenkai/hayama-gikai/issues
+            </Link>
+          </LegalParagraph>
         </section>
       </Container>
     </LegalPageLayout>

@@ -1,8 +1,8 @@
 import type { Route } from "next";
 import Link from "next/link";
 import { routes } from "@/lib/routes";
-import type { BillWithContent } from "../../shared/types";
 import { BillCard } from "../../client/components/bill-list/bill-card";
+import type { BillWithContent } from "../../shared/types";
 
 interface FeaturedBillSectionProps {
   bills: BillWithContent[];
@@ -21,7 +21,7 @@ export function FeaturedBillSection({ bills }: FeaturedBillSectionProps) {
           注目の法案🔥
         </h2>
         <p className="text-xs font-medium text-mirai-text-secondary leading-[1.67]">
-          国会に提出された注目法案
+          葉山町議会に提出された注目議案
         </p>
       </div>
 

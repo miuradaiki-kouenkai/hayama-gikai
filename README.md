@@ -1,4 +1,6 @@
-# みらい議会
+# みらい議会＠葉山町
+
+ソフトウェアは [AGPL-3.0](./LICENSE) です。ロゴ・OGP・PWA アイコンなどのブランド資産は AGPL の対象外で、[LICENSE-ASSETS.md](./LICENSE-ASSETS.md) に従います。
 
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/team-mirai-volunteer/mirai-gikai)
 [![codecov](https://codecov.io/gh/team-mirai/mirai-gikai/branch/develop/graph/badge.svg)](https://codecov.io/gh/team-mirai/mirai-gikai)

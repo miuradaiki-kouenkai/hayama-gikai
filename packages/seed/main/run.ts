@@ -96,7 +96,7 @@ async function seedDatabase() {
 
     console.log(`✅ Inserted ${insertedBills.length} bills`);
 
-    // Link first 3 bills to the 219 diet session (current session)
+    // 先頭3議案を現会期（葉山町議会 令和7年第4回定例会）に紐付け
     const session219Id = insertedDietSessions[0]?.id;
     if (session219Id) {
       const billsToLink = insertedBills.slice(0, 3);
@@ -109,7 +109,7 @@ async function seedDatabase() {
       console.log(`🔗 Linked ${billsToLink.length} bills to 219 diet session`);
     }
 
-    // Link last 5 bills to the 218 diet session (previous session)
+    // 末尾5議案を前会期（葉山町議会 令和7年第3回定例会）に紐付け
     const session218Id = insertedDietSessions[1]?.id;
     if (session218Id) {
       const bills218 = insertedBills.slice(-5);
@@ -126,14 +126,14 @@ async function seedDatabase() {
       string,
       { knowledge_source: string; use_knowledge_source_in_chat: boolean }
     > = {
-      "ガソリン税暫定税率廃止法案": {
+      "葉山町一般会計補正予算": {
         knowledge_source:
-          "この法案についてあなたの意見を聞かせてください。",
+          "この議案についてあなたの意見を聞かせてください。",
         use_knowledge_source_in_chat: true,
       },
-      "船荷証券の電子化に関する法律案": {
+      "コミュニティバス実証運行に関する条例": {
         knowledge_source:
-          "船荷証券（B/L）の電子化に関する法律案について、あなたの意見を聞かせてください。",
+          "コミュニティバスの実証運行に関する条例について、あなたの意見を聞かせてください。",
         use_knowledge_source_in_chat: true,
       },
     };

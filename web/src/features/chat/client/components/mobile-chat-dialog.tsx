@@ -47,7 +47,7 @@ export function MobileChatDialog({
         <DialogPrimitive.Content
           aria-describedby={undefined}
           aria-modal="true"
-          className={`fixed inset-x-0 bottom-0 z-50 h-[80vh] bg-white shadow-md rounded-t-2xl flex flex-col outline-none ${CHAT_PANEL_RESPONSIVE_CLASSES}`}
+          className={`fixed inset-x-0 bottom-0 z-50 h-[80vh] bg-card shadow-md rounded-t-2xl flex flex-col outline-none ${CHAT_PANEL_RESPONSIVE_CLASSES}`}
           style={style}
           onOpenAutoFocus={(event) => {
             event.preventDefault();
@@ -63,7 +63,7 @@ export function MobileChatDialog({
           }}
         >
           <DialogPrimitive.Title className="sr-only">
-            国会や法案についてAIに質問する
+            葉山町議会や議案についてAIに質問する
           </DialogPrimitive.Title>
           <DialogPrimitive.Close asChild>
             <Button

@@ -172,7 +172,7 @@ export async function GET(request: Request) {
               maxHeight: OG_BILL_NAME_MAX_HEIGHT,
               fontSize: 32,
               fontWeight: 800,
-              color: "#0f8472",
+              color: "#003e8a",
               lineHeight: 1.5,
               overflow: "hidden",
               wordBreak: "break-all",
@@ -182,7 +182,7 @@ export async function GET(request: Request) {
           </div>
         </div>
 
-        {/* みらい議会バッジ */}
+        {/* みらい議会＠葉山町バッジ */}
         <div
           style={{
             position: "absolute",
@@ -198,7 +198,7 @@ export async function GET(request: Request) {
             borderBottomLeftRadius: 30,
             borderTopRightRadius: 30,
             backgroundImage:
-              "linear-gradient(-30deg, rgb(188, 236, 211) 1%, rgb(100, 216, 198) 99%)",
+              "linear-gradient(-30deg, rgb(211, 231, 255) 1%, rgb(111, 177, 255) 99%)",
           }}
         >
           <span
@@ -209,7 +209,7 @@ export async function GET(request: Request) {
               letterSpacing: "0.03em",
             }}
           >
-            みらい議会
+            みらい議会＠葉山町
           </span>
         </div>
 
@@ -217,9 +217,9 @@ export async function GET(request: Request) {
         {logoDataUrl && (
           // biome-ignore lint/performance/noImgElement: ignore
           <img
-            alt="チームみらいロゴ"
+            alt="みらい議会＠葉山町ロゴ"
             src={logoDataUrl}
-            width={189}
+            width={160}
             height={160}
             style={{
               position: "absolute",

@@ -1,0 +1,5 @@
+.env
+.env.production
+.env*.local
+web/.next
+node_modules

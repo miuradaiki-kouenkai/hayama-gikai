@@ -8,6 +8,56 @@
 
 @custom-variant dark (&:is(.dark *));
 
+:root {
+  --mirai-text: #1f2937;
+  --mirai-text-secondary: #404040;
+  --mirai-text-muted: #8e8e93;
+  --mirai-text-placeholder: #aeaeb2;
+  --mirai-text-note: #4c4c4c;
+  --mirai-text-subtle: #666666;
+  --mirai-text-close: #9f9b9b;
+  --mirai-surface: #f7f4f0;
+  --mirai-surface-light: #eeeeee;
+  --mirai-surface-grouped: #f2f2f7;
+  --mirai-surface-muted: #e5e5ea;
+  --mirai-surface-tag: #e8e8e8;
+  --mirai-surface-warm: #eae6dd;
+  --mirai-surface-gray: #f6f6f6;
+  --mirai-border: #d2d2d2;
+  --mirai-border-light: #b1b1b1;
+  --mirai-border-muted: #bebcbc;
+  --stance-for-bg: #ecfcf1;
+  --stance-for-badge-start: #e2f6f3;
+  --stance-for-badge-end: #eef6e2;
+  --stance-against: #c9272a;
+  --stance-against-light: #d23c3f;
+  --stance-against-bg: #fff1f1;
+  --stance-against-badge-bg: #ffeaea;
+  --stance-neutral: #805f34;
+  --stance-neutral-badge-bg: #f7e8db;
+  --mirai-reaction-active: #dd425f;
+  --mirai-star: #ff9500;
+  --mirai-highlight: #f4ff5f;
+  --mirai-badge-yellow: #fffd96;
+  --mirai-info-blue: #b2d3e8;
+  --mirai-progress-track: #d9d9d9;
+  --mirai-progress-fill: #a9e89d;
+  --mirai-gradient-start: #6fb1ff;
+  --mirai-gradient-end: #d3e7ff;
+  --mirai-brand-teal: #005dcb;
+  --mirai-brand-teal-hover: #004499;
+  --mirai-brand-teal-deep: #0a2a5e;
+  --mirai-brand-mint: #e3effe;
+  --topic-info-bg: #e3effe;
+  --topic-chip-bg: #f1f1f1;
+  --topic-count: #5b6b8c;
+  --topic-label: #909090;
+  --topic-affected: #c8642a;
+  --topic-industry: #2563a8;
+  --topic-expert: #003e8a;
+  --topic-citizen: #909090;
+}
+
 @theme inline {
   --breakpoint-sm: 500px;
   --breakpoint-md: 700px;
@@ -58,72 +108,72 @@
   /* --- Mirai Design System Color Tokens --- */
 
   /* Text */
-  --color-mirai-text: #1f2937;
-  --color-mirai-text-secondary: #404040;
-  --color-mirai-text-muted: #8e8e93;
-  --color-mirai-text-placeholder: #aeaeb2;
-  --color-mirai-text-note: #4c4c4c;
-  --color-mirai-text-subtle: #666666;
-  --color-mirai-text-close: #9f9b9b;
+  --color-mirai-text: var(--mirai-text);
+  --color-mirai-text-secondary: var(--mirai-text-secondary);
+  --color-mirai-text-muted: var(--mirai-text-muted);
+  --color-mirai-text-placeholder: var(--mirai-text-placeholder);
+  --color-mirai-text-note: var(--mirai-text-note);
+  --color-mirai-text-subtle: var(--mirai-text-subtle);
+  --color-mirai-text-close: var(--mirai-text-close);
 
   /* Surface / Background */
-  --color-mirai-surface: #f7f4f0;
-  --color-mirai-surface-light: #eeeeee;
-  --color-mirai-surface-grouped: #f2f2f7;
-  --color-mirai-surface-muted: #e5e5ea;
-  --color-mirai-surface-tag: #e8e8e8;
-  --color-mirai-surface-warm: #eae6dd;
-  --color-mirai-surface-gray: #f6f6f6;
+  --color-mirai-surface: var(--mirai-surface);
+  --color-mirai-surface-light: var(--mirai-surface-light);
+  --color-mirai-surface-grouped: var(--mirai-surface-grouped);
+  --color-mirai-surface-muted: var(--mirai-surface-muted);
+  --color-mirai-surface-tag: var(--mirai-surface-tag);
+  --color-mirai-surface-warm: var(--mirai-surface-warm);
+  --color-mirai-surface-gray: var(--mirai-surface-gray);
 
   /* Border */
-  --color-mirai-border: #d2d2d2;
-  --color-mirai-border-light: #b1b1b1;
-  --color-mirai-border-muted: #bebcbc;
+  --color-mirai-border: var(--mirai-border);
+  --color-mirai-border-light: var(--mirai-border-light);
+  --color-mirai-border-muted: var(--mirai-border-muted);
 
   /* Stance semantic colors */
-  --color-stance-for-bg: #ecfcf1;
-  --color-stance-for-badge-start: #e2f6f3;
-  --color-stance-for-badge-end: #eef6e2;
-  --color-stance-against: #c9272a;
-  --color-stance-against-light: #d23c3f;
-  --color-stance-against-bg: #fff1f1;
-  --color-stance-against-badge-bg: #ffeaea;
-  --color-stance-neutral: #805f34;
-  --color-stance-neutral-badge-bg: #f7e8db;
+  --color-stance-for-bg: var(--stance-for-bg);
+  --color-stance-for-badge-start: var(--stance-for-badge-start);
+  --color-stance-for-badge-end: var(--stance-for-badge-end);
+  --color-stance-against: var(--stance-against);
+  --color-stance-against-light: var(--stance-against-light);
+  --color-stance-against-bg: var(--stance-against-bg);
+  --color-stance-against-badge-bg: var(--stance-against-badge-bg);
+  --color-stance-neutral: var(--stance-neutral);
+  --color-stance-neutral-badge-bg: var(--stance-neutral-badge-bg);
 
   /* Reaction */
-  --color-mirai-reaction-active: #dd425f;
+  --color-mirai-reaction-active: var(--mirai-reaction-active);
   --color-mirai-reaction-inactive: var(--color-mirai-text-muted);
 
   /* Accent */
-  --color-mirai-star: #ff9500;
-  --color-mirai-highlight: #f4ff5f;
-  --color-mirai-badge-yellow: #fffd96;
-  --color-mirai-info-blue: #b2d3e8;
+  --color-mirai-star: var(--mirai-star);
+  --color-mirai-highlight: var(--mirai-highlight);
+  --color-mirai-badge-yellow: var(--mirai-badge-yellow);
+  --color-mirai-info-blue: var(--mirai-info-blue);
 
   /* Progress */
-  --color-mirai-progress-track: #d9d9d9;
-  --color-mirai-progress-fill: #a9e89d;
+  --color-mirai-progress-track: var(--mirai-progress-track);
+  --color-mirai-progress-fill: var(--mirai-progress-fill);
 
   /* Gradient endpoints */
-  --color-mirai-gradient-start: #64d8c6;
-  --color-mirai-gradient-end: #bcecd3;
+  --color-mirai-gradient-start: var(--mirai-gradient-start);
+  --color-mirai-gradient-end: var(--mirai-gradient-end);
 
-  /* Team Mirai brand (party design system) */
-  --color-mirai-brand-teal: #30bca7;
-  --color-mirai-brand-teal-hover: #089781;
-  --color-mirai-brand-teal-deep: #17594f;
-  --color-mirai-brand-mint: #e2f6f3;
+  /* Hayama brand (based on hayama-koe-map logo #005DCB) */
+  --color-mirai-brand-teal: var(--mirai-brand-teal);
+  --color-mirai-brand-teal-hover: var(--mirai-brand-teal-hover);
+  --color-mirai-brand-teal-deep: var(--mirai-brand-teal-deep);
+  --color-mirai-brand-mint: var(--mirai-brand-mint);
 
   /* Topic analysis */
-  --color-topic-info-bg: #e5f3f0;
-  --color-topic-chip-bg: #f1f1f1;
-  --color-topic-count: #6b7775;
-  --color-topic-label: #909090;
-  --color-topic-affected: #c8642a;
-  --color-topic-industry: #2563a8;
-  --color-topic-expert: #0f8472;
-  --color-topic-citizen: #909090;
+  --color-topic-info-bg: var(--topic-info-bg);
+  --color-topic-chip-bg: var(--topic-chip-bg);
+  --color-topic-count: var(--topic-count);
+  --color-topic-label: var(--topic-label);
+  --color-topic-affected: var(--topic-affected);
+  --color-topic-industry: var(--topic-industry);
+  --color-topic-expert: var(--topic-expert);
+  --color-topic-citizen: var(--topic-citizen);
 
   /* 引用文の明朝体（Noto Serif JP） */
   --font-mirai-serif: var(--font-noto-serif-jp);
@@ -137,8 +187,8 @@
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: #2aa693;
-  --primary-accent: #0f8472;
+  --primary: #005dcb;
+  --primary-accent: #003e8a;
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
@@ -198,6 +248,30 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+
+  /* みらいトークンのダーク値（ライト値の上書き） */
+  --mirai-text: #f2f2f7;
+  --mirai-text-secondary: #d6d6dc;
+  --mirai-text-muted: #9a9aa5;
+  --mirai-text-note: #c9c9d2;
+  --mirai-text-subtle: #a8a8b3;
+  --mirai-surface: #17171c;
+  --mirai-surface-light: #101014;
+  --mirai-surface-grouped: #1e1e24;
+  --mirai-surface-muted: #2a2a32;
+  --mirai-surface-tag: #2a2a32;
+  --mirai-surface-warm: #23232a;
+  --mirai-surface-gray: #1e1e24;
+  --mirai-border: #3a3a44;
+  --mirai-border-light: #4a4a56;
+  --mirai-border-muted: #3a3a44;
+  --mirai-brand-teal-deep: #9cc4ff;
+  --mirai-brand-mint: #1d2f4d;
+  --mirai-gradient-start: #1d4e9e;
+  --mirai-gradient-end: #12315f;
+  --mirai-info-blue: #274b66;
+  --mirai-badge-yellow: #5a5416;
+  --mirai-progress-track: #2e2e36;
 }
 
 @layer base {
@@ -260,7 +334,11 @@
   }
 
   .bg-mirai-light-gradient {
-    background-image: linear-gradient(to bottom, #e2f6f3, #eef6e2);
+    background-image: linear-gradient(to bottom, #e3effe, #eef3fb);
+  }
+
+  .dark .bg-mirai-light-gradient {
+    background-image: linear-gradient(to bottom, #1d3a63, #16294a);
   }
 
   .bg-mirai-white-fade {

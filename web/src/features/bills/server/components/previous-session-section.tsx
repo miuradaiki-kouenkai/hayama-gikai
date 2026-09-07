@@ -48,17 +48,17 @@ export function PreviousSessionSection({
           />
         </h2>
         <p className="text-sm font-bold text-primary-accent">
-          過去の国会に提出された法案
+          過去の議会に提出された議案
         </p>
       </div>
 
       {/* セクションヘッダー（リンク付き） */}
       <div className="flex flex-col gap-1.5">
         <Link href={sessionBillsUrl as Route} className="group">
-          <h3 className="text-[22px] font-bold text-black leading-[1.48] flex items-center gap-1.5">
+          <h3 className="text-[22px] font-bold text-mirai-text leading-[1.48] flex items-center gap-1.5">
             <span className="flex items-center gap-4">
               {new Date(session.start_date).getFullYear()}年 {session.name}
-              の提出法案
+              の提出議案
               <span className="shrink-0">{totalBillCount}件</span>
             </span>
             <ChevronRight className="h-6 w-6 text-gray-600 group-hover:translate-x-0.5 transition-transform" />
