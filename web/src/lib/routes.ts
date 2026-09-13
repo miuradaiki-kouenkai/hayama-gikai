@@ -18,6 +18,7 @@ export const routes = {
   // ── 議案 ──────────────────────────────────────────
   billsList: () => "/bills" as const,
   sessions: () => "/sessions" as const,
+  dashboard: () => "/dashboard" as const,
   billDetail: (billId: string) => `/bills/${billId}` as const,
   billOpinions: (billId: string) => `/bills/${billId}/opinions` as const,
   billTopics: (billId: string) => `/bills/${billId}/topics` as const,

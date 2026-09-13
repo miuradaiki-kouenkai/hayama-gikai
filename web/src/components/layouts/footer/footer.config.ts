@@ -27,6 +27,10 @@ export const primaryLinks: FooterLink[] = [
     href: routes.sessions(),
   },
   {
+    label: "データで見る議会",
+    href: routes.dashboard(),
+  },
+  {
     label: "葉山町議会（町公式サイト）",
     href: "https://www.town.hayama.lg.jp/gikai/",
     external: true,

@@ -16,6 +16,7 @@ describe("footer.config", () => {
       routes.home(),
       routes.billsList(),
       routes.sessions(),
+      routes.dashboard(),
       routes.terms(),
       routes.privacy(),
       routes.developers(),
