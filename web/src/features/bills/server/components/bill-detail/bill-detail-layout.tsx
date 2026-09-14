@@ -2,6 +2,8 @@ import { Container } from "@/components/layouts/container";
 import { AskAiFloat } from "@/features/ask-ai/client/components/ask-ai-float";
 import { isBuiltInChatEnabled } from "@/features/ask-ai/shared/built-in-chat";
 import type { DifficultyLevelEnum } from "@/features/bill-difficulty/shared/types";
+import { BillDebatesSection } from "@/features/council/server/components/bill-debates-section";
+import { BillVotesSection } from "@/features/council/server/components/bill-votes-section";
 import { InterviewLandingSection } from "@/features/interview-config/client/components/interview-landing-section";
 import { getInterviewConfig } from "@/features/interview-config/server/loaders/get-interview-config";
 import { getPublicReportsByBillId } from "@/features/interview-report/server/loaders/get-public-reports-by-bill-id";
@@ -90,6 +92,16 @@ export async function BillDetailLayout({
             />
           </div>
         )}
+        {/* 議員の賛否（葉山町議会の議員別賛否より。データがある場合のみ表示） */}
+        <div className="my-8">
+          <BillVotesSection billId={bill.id} />
+        </div>
+
+        {/* 討論での発言（会議録より。データがある場合のみ表示） */}
+        <div className="my-8">
+          <BillDebatesSection billId={bill.id} />
+        </div>
+
         {/* シェアボタン */}
         <div className="my-8">
           <BillShareButtons bill={bill} />

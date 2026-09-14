@@ -21,6 +21,7 @@ import {
   DEMO_REPORT_ID_CITIZEN,
 } from "./data";
 import { createBillContents } from "./bill-contents-data";
+import { seedHayamaCouncilData } from "./hayama-council-data";
 import {
   createShippingBillInterviewConfig,
   createShippingBillQuestions,
@@ -213,6 +214,10 @@ async function seedDatabase() {
     }
 
     console.log(`✅ Inserted ${insertedBillsTags.length} bills-tags relations`);
+
+    // === 葉山町議会の実データ（議員名簿・賛否・討論）===
+    console.log("🏛️  Inserting Hayama council data...");
+    await seedHayamaCouncilData(supabase);
 
     // Insert interview config (for first bill)
     console.log("💬 Inserting interview config...");

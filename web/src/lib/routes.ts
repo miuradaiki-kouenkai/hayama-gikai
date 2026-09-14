@@ -50,4 +50,8 @@ export const routes = {
 
   // ── 国会セッション ────────────────────────────────
   kokkaiSessionBills: (slug: string) => `/kokkai/${slug}/bills` as const,
+
+  // ── 議員（葉山町議会） ──────────────────────────────
+  membersList: () => "/members" as const,
+  memberDetail: (memberId: string) => `/members/${memberId}` as const,
 } as const;
