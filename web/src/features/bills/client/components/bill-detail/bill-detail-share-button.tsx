@@ -31,7 +31,7 @@ export function BillDetailShareButton({
           alt="共有アイコン"
           width={20}
           height={20}
-          className="shrink-0"
+          className="shrink-0 dark:invert"
         />
         共有する
       </Button>
