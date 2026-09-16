@@ -41,7 +41,7 @@ export async function BillVotesSection({ billId }: BillVotesSectionProps) {
         <Vote className="h-6 w-6" />
         議員の賛否
       </h2>
-      <div className="rounded-2xl border border-mirai-border bg-white px-6 py-5">
+      <div className="rounded-2xl border border-mirai-border bg-card px-6 py-5">
         <p className="text-lg font-bold mb-4">
           賛成 {forCount} ・ 反対 {againstCount}
           <span className="ml-2 text-sm font-normal text-mirai-text-muted">
@@ -112,7 +112,7 @@ function MemberNames({ votes }: { votes: BillVoteWithMember[] }) {
             （{v.council_members?.seat_number}番）
           </span>
           {v.debated && (
-            <span className="rounded-full bg-white px-2 text-xs font-bold">
+            <span className="rounded-full bg-card px-2 text-xs font-bold text-mirai-text">
               討論あり
             </span>
           )}

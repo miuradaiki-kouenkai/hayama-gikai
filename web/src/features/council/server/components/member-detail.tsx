@@ -57,7 +57,7 @@ export function MemberDetail({ member, votes, debates }: MemberDetailProps) {
               {votingVotes.map((v) => (
                 <li
                   key={`${v.bill_id}-${v.council_member_id}`}
-                  className="rounded-lg border border-mirai-border bg-white px-4 py-3 text-[15px]"
+                  className="rounded-lg border border-mirai-border bg-card px-4 py-3 text-[15px]"
                 >
                   <span className={voteTextClass(v.vote)}>
                     {COUNCIL_VOTE_MARKS[v.vote]} {COUNCIL_VOTE_LABELS[v.vote]}
@@ -94,7 +94,7 @@ export function MemberDetail({ member, votes, debates }: MemberDetailProps) {
             {debates.map((d) => (
               <li
                 key={d.id}
-                className="rounded-lg border border-mirai-border bg-white px-4 py-3 text-[15px]"
+                className="rounded-lg border border-mirai-border bg-card px-4 py-3 text-[15px]"
               >
                 <span
                   className={

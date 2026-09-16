@@ -70,7 +70,7 @@ function DebateCard({ debate }: { debate: BillDebateWithMember }) {
       ? `${debate.content.slice(0, 400)}…`
       : debate.content;
   return (
-    <div className="rounded-lg border border-mirai-border bg-white px-4 py-3">
+    <div className="rounded-lg border border-mirai-border bg-card px-4 py-3">
       <p className="text-sm font-bold mb-1">
         {debate.council_members ? (
           <Link
