@@ -13,6 +13,7 @@ import { BillStatusBadge } from "../../../client/components/bill-list/bill-statu
 import { BillTag } from "../../../client/components/bill-list/bill-tag";
 import { getBillShareData } from "../../../client/utils/share";
 import type { BillWithContent } from "../../../shared/types";
+import { normalizeThumbnailUrl } from "../../../shared/utils/thumbnail";
 
 interface BillDetailHeaderProps {
   bill: BillWithContent;
@@ -31,13 +32,14 @@ export async function BillDetailHeader({
   const displaySummary = bill.bill_content?.summary;
 
   const { shareUrl, shareMessage, thumbnailUrl } = await getBillShareData(bill);
+  const displayThumbnail = normalizeThumbnailUrl(bill.thumbnail_url);
 
   return (
     <div className="mb-8 bg-card rounded-b-4xl">
-      {bill.thumbnail_url ? (
+      {displayThumbnail ? (
         <div className="relative w-full h-72 md:h-80">
           <Image
-            src={bill.thumbnail_url}
+            src={displayThumbnail}
             alt={bill.name}
             fill
             className="object-cover"

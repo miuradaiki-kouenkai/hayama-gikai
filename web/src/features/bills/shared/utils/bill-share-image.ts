@@ -1,4 +1,5 @@
 import type { Bill } from "../types";
+import { normalizeThumbnailUrl } from "./thumbnail";
 
 /**
  * SNSシェア用のOGP画像URLを解決する。
@@ -10,8 +11,8 @@ export function resolveBillShareImageUrl(
   webUrl: string
 ): string {
   return (
-    bill?.share_thumbnail_url ||
-    bill?.thumbnail_url ||
+    normalizeThumbnailUrl(bill?.share_thumbnail_url) ||
+    normalizeThumbnailUrl(bill?.thumbnail_url) ||
     new URL("/ogp.jpg", webUrl).toString()
   );
 }
