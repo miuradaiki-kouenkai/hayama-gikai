@@ -4,7 +4,6 @@ import { isBuiltInChatEnabled } from "@/features/ask-ai/shared/built-in-chat";
 import type { DifficultyLevelEnum } from "@/features/bill-difficulty/shared/types";
 import { BillDebatesSection } from "@/features/council/server/components/bill-debates-section";
 import { BillVotesSection } from "@/features/council/server/components/bill-votes-section";
-import { InterviewLandingSection } from "@/features/interview-config/client/components/interview-landing-section";
 import { getInterviewConfig } from "@/features/interview-config/server/loaders/get-interview-config";
 import { getPublicReportsByBillId } from "@/features/interview-report/server/loaders/get-public-reports-by-bill-id";
 import { BillTopicsPreviewSection } from "@/features/user-topic-analysis/server/components/bill-topics-preview-section";
@@ -77,11 +76,6 @@ export async function BillDetailLayout({
           />
         </div>
 
-        {interviewConfig != null && (
-          <div className="my-8">
-            <InterviewLandingSection billId={bill.id} />
-          </div>
-        )}
         {/* 議員の賛否（葉山町議会の議員別賛否より。データがある場合のみ表示） */}
         <div className="my-8">
           <BillVotesSection billId={bill.id} billName={bill.name} />
