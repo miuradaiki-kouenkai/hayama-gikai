@@ -80,7 +80,7 @@ export function BillCard({ bill }: BillCardProps) {
                     <BillTag key={tag.id} tag={tag} />
                   ))}
                   {bill.hasPublicInterview && (
-                    <span className="inline-flex items-center justify-center px-3 py-1 text-xs font-medium text-black bg-mirai-light-gradient rounded-full">
+                    <span className="inline-flex items-center justify-center px-3 py-1 text-xs font-medium text-mirai-text bg-mirai-light-gradient rounded-full">
                       AIインタビュー受付中
                     </span>
                   )}

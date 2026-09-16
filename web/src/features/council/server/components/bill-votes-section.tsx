@@ -5,6 +5,7 @@ import Link from "next/link";
 import { routes } from "@/lib/routes";
 import type { BillVoteWithMember } from "../../shared/types";
 import { COUNCIL_VOTE_LABELS, COUNCIL_VOTE_MARKS } from "../../shared/types";
+import { getJuneBillPdfUrl } from "../../shared/utils/bill-source";
 import {
   countCouncilVotes,
   sortVotesBySeat,
@@ -13,13 +14,17 @@ import { findVotesByBillId } from "../repositories/council-repository";
 
 interface BillVotesSectionProps {
   billId: string;
+  billName: string;
 }
 
 /**
  * 議案詳細の議員別賛否セクション。
  * データ源: 議員別賛否PDF（○=賛成/×=反対/討論=討論参加/−=議長で表決権なし）
  */
-export async function BillVotesSection({ billId }: BillVotesSectionProps) {
+export async function BillVotesSection({
+  billId,
+  billName,
+}: BillVotesSectionProps) {
   const rows = (await findVotesByBillId(billId)) as BillVoteWithMember[];
   if (rows.length === 0) {
     return null;
@@ -34,6 +39,7 @@ export async function BillVotesSection({ billId }: BillVotesSectionProps) {
     proposer: votes.filter((v) => v.vote === "proposer"),
     nonVoting: votes.filter((v) => v.vote === "non_voting"),
   };
+  const billPdfUrl = getJuneBillPdfUrl(billName);
 
   return (
     <>
@@ -80,6 +86,19 @@ export async function BillVotesSection({ billId }: BillVotesSectionProps) {
 
         <p className="mt-3 text-sm text-mirai-text-muted">
           出典:{" "}
+          {billPdfUrl && (
+            <>
+              <a
+                href={billPdfUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="underline underline-offset-2"
+              >
+                議案本文PDF
+              </a>
+              ・{" "}
+            </>
+          )}
           <a
             href="https://www.town.hayama.lg.jp/material/files/group/27/7-6sanpi.pdf"
             target="_blank"

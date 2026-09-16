@@ -6,8 +6,8 @@ import type {
   MemberDebateHistory,
   MemberVoteHistory,
 } from "../../shared/types";
-import { voteTextClass } from "../../shared/utils/vote-display";
 import { COUNCIL_VOTE_LABELS, COUNCIL_VOTE_MARKS } from "../../shared/types";
+import { voteTextClass } from "../../shared/utils/vote-display";
 
 interface MemberDetailProps {
   member: CouncilMember;

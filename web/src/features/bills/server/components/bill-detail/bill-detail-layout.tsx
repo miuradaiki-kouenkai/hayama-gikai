@@ -94,7 +94,7 @@ export async function BillDetailLayout({
         )}
         {/* 議員の賛否（葉山町議会の議員別賛否より。データがある場合のみ表示） */}
         <div className="my-8">
-          <BillVotesSection billId={bill.id} />
+          <BillVotesSection billId={bill.id} billName={bill.name} />
         </div>
 
         {/* 討論での発言（会議録より。データがある場合のみ表示） */}
