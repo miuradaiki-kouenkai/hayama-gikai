@@ -2,8 +2,6 @@ import { MessageSquare } from "lucide-react";
 import type { Route } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { getInterviewLPLink } from "@/features/interview-config/shared/utils/interview-links";
 import { routes } from "@/lib/routes";
 import { formatDateWithDots } from "@/lib/utils/date";
 import { BillDetailShareButton } from "../../../client/components/bill-detail/bill-detail-share-button";
@@ -18,7 +16,6 @@ import type { BillWithContent } from "../../../shared/types";
 
 interface BillDetailHeaderProps {
   bill: BillWithContent;
-  hasInterviewConfig?: boolean;
   /** 意見数（トピック分析の total_opinions）。回答者数（人数）ではない点に注意。 */
   opinionCount?: number;
   /** 公開トピック数。1件以上ならトピック一覧への導線として件数を併記する。 */
@@ -27,7 +24,6 @@ interface BillDetailHeaderProps {
 
 export async function BillDetailHeader({
   bill,
-  hasInterviewConfig,
   opinionCount,
   topicCount,
 }: BillDetailHeaderProps) {
@@ -121,24 +117,6 @@ export async function BillDetailHeader({
           </Link>
         )}
         <div className="flex items-center gap-2">
-          {hasInterviewConfig && (
-            <Button
-              variant="default"
-              size="sm"
-              asChild
-              className="bg-mirai-light-gradient text-[13px] font-bold text-mirai-text gap-1.5 py-1 px-3"
-            >
-              <Link href={getInterviewLPLink(bill.id) as Route}>
-                <Image
-                  src="/icons/interview-cooperation.svg"
-                  alt=""
-                  width={23}
-                  height={23}
-                />
-                AIインタビューに協力する
-              </Link>
-            </Button>
-          )}
           <BillDetailShareButton
             shareMessage={shareMessage}
             shareUrl={shareUrl}
