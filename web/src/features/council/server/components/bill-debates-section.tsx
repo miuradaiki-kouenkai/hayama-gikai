@@ -22,6 +22,7 @@ export async function BillDebatesSection({ billId }: BillDebatesSectionProps) {
 
   const forDebates = debates.filter((d) => d.stance === "for");
   const againstDebates = debates.filter((d) => d.stance === "against");
+  const meetingUrl = debates.find((d) => d.source_url)?.source_url ?? null;
 
   return (
     <>
@@ -55,8 +56,23 @@ export async function BillDebatesSection({ billId }: BillDebatesSectionProps) {
           </div>
         )}
         <p className="text-sm text-mirai-text-muted">
-          出典:
-          葉山町議会の会議録（発言の冒頭部分を抜粋。全文は会議録検索で確認できます）
+          出典: 葉山町議会の会議録（発言の冒頭部分を抜粋。
+          {meetingUrl ? (
+            <>
+              全文は
+              <a
+                href={meetingUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="underline underline-offset-2"
+              >
+                会議録検索
+              </a>
+              で確認できます）
+            </>
+          ) : (
+            "全文は会議録検索で確認できます）"
+          )}
         </p>
       </div>
     </>
@@ -86,6 +102,16 @@ function DebateCard({ debate }: { debate: BillDebateWithMember }) {
           <span className="ml-2 font-normal text-mirai-text-muted">
             {debate.council_members.party}
           </span>
+        )}
+        {debate.source_url && (
+          <a
+            href={debate.source_url}
+            target="_blank"
+            rel="noreferrer"
+            className="ml-2 font-normal underline underline-offset-2"
+          >
+            原文
+          </a>
         )}
       </p>
       <p className="text-[15px] leading-relaxed whitespace-pre-wrap">

@@ -79,7 +79,34 @@ export async function BillVotesSection({ billId }: BillVotesSectionProps) {
         )}
 
         <p className="mt-3 text-sm text-mirai-text-muted">
-          出典: 葉山町議会の議員別賛否結果（町サイト公開PDFより転記）
+          出典:{" "}
+          <a
+            href="https://www.town.hayama.lg.jp/material/files/group/27/7-6sanpi.pdf"
+            target="_blank"
+            rel="noreferrer"
+            className="underline underline-offset-2"
+          >
+            議員別賛否結果PDF
+          </a>
+          ・{" "}
+          <a
+            href="https://www.town.hayama.lg.jp/gikai/2_1/r2_5/15562.html"
+            target="_blank"
+            rel="noreferrer"
+            className="underline underline-offset-2"
+          >
+            町サイト会期ページ
+          </a>
+          ・{" "}
+          <a
+            href="https://hayama-gikai.gijiroku.com/g07_Nittei_Kaigi.asp?KaigiID=43"
+            target="_blank"
+            rel="noreferrer"
+            className="underline underline-offset-2"
+          >
+            会議録検索
+          </a>
+          （6月定例会議分より転記）
         </p>
       </div>
     </>
