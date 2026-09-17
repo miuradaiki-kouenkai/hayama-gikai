@@ -2,6 +2,7 @@ import { getDifficultyLevel } from "@/features/bill-difficulty/server/loaders/ge
 import type { DifficultyLevelEnum } from "@/features/bill-difficulty/shared/types";
 import { getOrigin } from "@/lib/utils/url";
 import type { BillWithContent } from "../../shared/types";
+import { normalizeThumbnailUrl } from "../../shared/utils/thumbnail";
 
 /**
  * シェアURLを生成
@@ -47,6 +48,8 @@ export async function getBillShareData(bill: BillWithContent) {
     shareUrl: createBillShareUrl(origin, bill.id, difficulty),
     shareMessage: createShareMessage(bill),
     // シェア用OGP画像を優先的に使用、なければ通常のサムネイル
-    thumbnailUrl: bill.share_thumbnail_url || bill.thumbnail_url,
+    thumbnailUrl:
+      normalizeThumbnailUrl(bill.share_thumbnail_url) ||
+      normalizeThumbnailUrl(bill.thumbnail_url),
   };
 }

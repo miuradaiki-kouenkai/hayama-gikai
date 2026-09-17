@@ -20,7 +20,9 @@ const TABLES_TO_CLEAR = [
   "chats",
   "bill_contents",
   "bills_tags",
+  "bill_debates",
   "bills",
+  "council_members",
   "tags",
   "diet_sessions",
 ] as const;

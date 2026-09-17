@@ -240,6 +240,16 @@
   --chart-3: oklch(0.769 0.188 70.08);
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
+  --primary-accent: #4d9fff;
+  --stance-for-bg: oklch(0.32 0.12 150);
+  --stance-for-badge-start: oklch(0.28 0.1 150);
+  --stance-for-badge-end: oklch(0.25 0.08 120);
+  --stance-against: oklch(0.75 0.3 20);
+  --stance-against-light: oklch(0.8 0.25 25);
+  --stance-against-bg: oklch(0.32 0.12 20);
+  --stance-against-badge-bg: oklch(0.28 0.1 20);
+  --stance-neutral: oklch(0.65 0.12 60);
+  --stance-neutral-badge-bg: oklch(0.28 0.08 60);
   --sidebar: oklch(0.205 0 0);
   --sidebar-foreground: oklch(0.985 0 0);
   --sidebar-primary: oklch(0.488 0.243 264.376);
@@ -271,6 +281,7 @@
   --mirai-gradient-end: #12315f;
   --mirai-info-blue: #274b66;
   --mirai-badge-yellow: #5a5416;
+  --mirai-highlight: #5a5416;
   --mirai-progress-track: #2e2e36;
 }
 

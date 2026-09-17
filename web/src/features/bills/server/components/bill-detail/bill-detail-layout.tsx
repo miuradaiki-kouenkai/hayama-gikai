@@ -2,7 +2,8 @@ import { Container } from "@/components/layouts/container";
 import { AskAiFloat } from "@/features/ask-ai/client/components/ask-ai-float";
 import { isBuiltInChatEnabled } from "@/features/ask-ai/shared/built-in-chat";
 import type { DifficultyLevelEnum } from "@/features/bill-difficulty/shared/types";
-import { InterviewLandingSection } from "@/features/interview-config/client/components/interview-landing-section";
+import { BillDebatesSection } from "@/features/council/server/components/bill-debates-section";
+import { BillVotesSection } from "@/features/council/server/components/bill-votes-section";
 import { getInterviewConfig } from "@/features/interview-config/server/loaders/get-interview-config";
 import { getPublicReportsByBillId } from "@/features/interview-report/server/loaders/get-public-reports-by-bill-id";
 import { BillTopicsPreviewSection } from "@/features/user-topic-analysis/server/components/bill-topics-preview-section";
@@ -11,7 +12,6 @@ import { env } from "@/lib/env";
 import { routes } from "@/lib/routes";
 import { BillDetailClient } from "../../../client/components/bill-detail/bill-detail-client";
 import { BillDisclaimer } from "../../../client/components/bill-detail/bill-disclaimer";
-import { MiraiStanceCard } from "../../../client/components/bill-detail/mirai-stance-card";
 import type { BillWithContent } from "../../../shared/types";
 import { BillShareButtons } from "../share/bill-share-buttons";
 import { BillContent } from "./bill-content";
@@ -26,7 +26,6 @@ export async function BillDetailLayout({
   bill,
   currentDifficulty,
 }: BillDetailLayoutProps) {
-  const showMiraiStance = bill.status === "preparing" || bill.mirai_stance;
   const [interviewConfig, publicReportsResult, topicAnalysis] =
     await Promise.all([
       getInterviewConfig(bill.id),
@@ -51,7 +50,6 @@ export async function BillDetailLayout({
       >
         <BillDetailHeader
           bill={bill}
-          hasInterviewConfig={interviewConfig != null}
           opinionCount={topicAnalysis?.total_opinions ?? 0}
           topicCount={topicAnalysis?.topics.length ?? 0}
         />
@@ -77,19 +75,16 @@ export async function BillDetailLayout({
           />
         </div>
 
-        {interviewConfig != null && (
-          <div className="my-8">
-            <InterviewLandingSection billId={bill.id} />
-          </div>
-        )}
-        {showMiraiStance && (
-          <div className="my-8">
-            <MiraiStanceCard
-              stance={bill.mirai_stance}
-              billStatus={bill.status}
-            />
-          </div>
-        )}
+        {/* 議員の賛否（葉山町議会の議員別賛否より。データがある場合のみ表示） */}
+        <div className="my-8">
+          <BillVotesSection billId={bill.id} billName={bill.name} />
+        </div>
+
+        {/* 討論での発言（会議録より。データがある場合のみ表示） */}
+        <div className="my-8">
+          <BillDebatesSection billId={bill.id} />
+        </div>
+
         {/* シェアボタン */}
         <div className="my-8">
           <BillShareButtons bill={bill} />

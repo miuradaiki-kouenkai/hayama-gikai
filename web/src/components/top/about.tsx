@@ -30,7 +30,7 @@ export function About() {
               <br />
               できる限りわかりやすく
             </h3>
-            <p className="text-[15px] leading-[28px] text-black">
+            <p className="text-[15px] leading-[28px] text-mirai-text">
               みらい議会＠葉山町は、葉山町議会で今どんな議案が検討されているか、わかりやすく伝えるプラットフォームです。町民の意見を町政に届けることを目指して、継続的にアップデートしていきます。
             </p>
           </div>

@@ -65,7 +65,7 @@ export function BillSearchOverlay({
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger className="inline-flex cursor-pointer items-center gap-1 text-[13px] font-bold text-mirai-brand-teal-hover hover:underline">
+      <DialogTrigger className="inline-flex cursor-pointer items-center gap-1 text-[13px] font-bold text-primary-accent hover:underline">
         <Search className="h-4 w-4" aria-hidden />
         議案を検索する
         <ChevronRight className="h-4 w-4" aria-hidden />

@@ -37,14 +37,14 @@ export function BillShareButtonsClient({
         <Button
           variant="default"
           onClick={handleShare}
-          className="rounded-full px-6 py-3 h-auto font-bold text-base bg-mirai-gradient text-gray-800 hover:opacity-90 border border-gray-800"
+          className="rounded-full px-6 py-3 h-auto font-bold text-base bg-mirai-gradient text-mirai-text hover:opacity-90 border border-gray-800"
         >
           <Image
             src="/icons/ios-share.svg"
             alt="共有アイコン"
             width={28}
             height={28}
-            className="shrink-0"
+            className="shrink-0 dark:invert"
           />
           記事を共有する
         </Button>
@@ -58,7 +58,7 @@ export function BillShareButtonsClient({
             alt="報告アイコン"
             width={26}
             height={26}
-            className="shrink-0"
+            className="shrink-0 dark:invert"
           />
           問題を報告する
         </Button>

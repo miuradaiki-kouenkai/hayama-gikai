@@ -2,8 +2,6 @@ import { MessageSquare } from "lucide-react";
 import type { Route } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { getInterviewLPLink } from "@/features/interview-config/shared/utils/interview-links";
 import { routes } from "@/lib/routes";
 import { formatDateWithDots } from "@/lib/utils/date";
 import { BillDetailShareButton } from "../../../client/components/bill-detail/bill-detail-share-button";
@@ -15,10 +13,10 @@ import { BillStatusBadge } from "../../../client/components/bill-list/bill-statu
 import { BillTag } from "../../../client/components/bill-list/bill-tag";
 import { getBillShareData } from "../../../client/utils/share";
 import type { BillWithContent } from "../../../shared/types";
+import { normalizeThumbnailUrl } from "../../../shared/utils/thumbnail";
 
 interface BillDetailHeaderProps {
   bill: BillWithContent;
-  hasInterviewConfig?: boolean;
   /** 意見数（トピック分析の total_opinions）。回答者数（人数）ではない点に注意。 */
   opinionCount?: number;
   /** 公開トピック数。1件以上ならトピック一覧への導線として件数を併記する。 */
@@ -27,7 +25,6 @@ interface BillDetailHeaderProps {
 
 export async function BillDetailHeader({
   bill,
-  hasInterviewConfig,
   opinionCount,
   topicCount,
 }: BillDetailHeaderProps) {
@@ -35,13 +32,14 @@ export async function BillDetailHeader({
   const displaySummary = bill.bill_content?.summary;
 
   const { shareUrl, shareMessage, thumbnailUrl } = await getBillShareData(bill);
+  const displayThumbnail = normalizeThumbnailUrl(bill.thumbnail_url);
 
   return (
     <div className="mb-8 bg-card rounded-b-4xl">
-      {bill.thumbnail_url ? (
+      {displayThumbnail ? (
         <div className="relative w-full h-72 md:h-80">
           <Image
-            src={bill.thumbnail_url}
+            src={displayThumbnail}
             alt={bill.name}
             fill
             className="object-cover"
@@ -121,24 +119,6 @@ export async function BillDetailHeader({
           </Link>
         )}
         <div className="flex items-center gap-2">
-          {hasInterviewConfig && (
-            <Button
-              variant="default"
-              size="sm"
-              asChild
-              className="bg-mirai-light-gradient text-[13px] font-bold text-gray-800 gap-1.5 py-1 px-3"
-            >
-              <Link href={getInterviewLPLink(bill.id) as Route}>
-                <Image
-                  src="/icons/interview-cooperation.svg"
-                  alt=""
-                  width={23}
-                  height={23}
-                />
-                AIインタビューに協力する
-              </Link>
-            </Button>
-          )}
           <BillDetailShareButton
             shareMessage={shareMessage}
             shareUrl={shareUrl}
