@@ -13,7 +13,7 @@ export function ComingSoonSection({ bills }: ComingSoonSectionProps) {
     <section className="flex flex-col gap-6">
       {/* ヘッダー */}
       <div className="flex flex-col gap-2">
-        <h2 className="text-[22px] font-bold text-black leading-[1.48]">
+        <h2 className="text-[22px] font-bold text-mirai-text leading-[1.48]">
           これから掲載される議案
         </h2>
         <p className="text-xs text-mirai-text-secondary">
@@ -61,15 +61,15 @@ function ComingSoonBillCard({ bill }: { bill: ComingSoonBill }) {
 
   const content = (
     <Card
-      className={`border border-black ${
+      className={`border border-mirai-border ${
         bill.shugiin_url
-          ? "hover:bg-gray-50 transition-colors cursor-pointer"
+          ? "hover:bg-mirai-surface-grouped transition-colors cursor-pointer"
           : ""
       }`}
     >
       <CardContent className="flex items-center justify-between py-4 px-5">
         <div className="flex flex-col gap-1 min-w-0 pr-3">
-          <h3 className="font-bold text-base text-black leading-tight">
+          <h3 className="font-bold text-base text-mirai-text leading-tight">
             {displayTitle}
           </h3>
           {officialName && (

@@ -16,7 +16,7 @@ export function Footer() {
   }
 
   return (
-    <footer className="bg-mirai-gradient text-slate-900">
+    <footer className="bg-mirai-gradient text-mirai-text">
       <div className="mx-auto flex w-full max-w-[500px] flex-col items-center px-6 py-14 pb-20 text-center">
         <FooterLogoSection />
         <FooterPrimaryLinks />
@@ -48,7 +48,7 @@ function FooterPrimaryLinks() {
     <nav aria-label="主要リンク" className="w-full mb-5">
       <ul
         className="
-      flex flex-col items-center gap-3 text-[14px] font-semibold text-slate-800
+      flex flex-col items-center gap-3 text-[14px] font-semibold text-mirai-text
       md:flex-row md:justify-center md:gap-5
       "
       >
@@ -58,7 +58,7 @@ function FooterPrimaryLinks() {
               href={link.href as Route}
               target={link.external ? "_blank" : undefined}
               rel={link.external ? "noreferrer" : undefined}
-              className="transition-colors hover:text-slate-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-900"
+              className="transition-colors hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-mirai-text"
             >
               {link.label}
             </Link>
@@ -71,7 +71,7 @@ function FooterPrimaryLinks() {
 
 function FooterPolicies() {
   return (
-    <div className="flex flex-col items-center text-[12px] font-semibold text-slate-800 mb-5">
+    <div className="flex flex-col items-center text-[12px] font-semibold text-mirai-text mb-5">
       <ul className="flex flex-wrap justify-center gap-x-2 gap-y-1">
         {policyLinks.map((policy, index) => (
           <li key={policy.label} className="flex items-center gap-2">
@@ -79,7 +79,7 @@ function FooterPolicies() {
               href={policy.href as Route}
               target={policy.external ? "_blank" : undefined}
               rel={policy.external ? "noreferrer" : undefined}
-              className="transition-colors hover:text-slate-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-900"
+              className="transition-colors hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-mirai-text"
             >
               {policy.label}
             </Link>
@@ -93,7 +93,7 @@ function FooterPolicies() {
 
 function FooterCopyright() {
   return (
-    <div className="text-center text-sm font-medium text-slate-800">
+    <div className="text-center text-sm font-medium text-mirai-text">
       <p className="mb-3 text-[12px] leading-relaxed">
         これは政党チームみらいが運営しているものではありません。
         <br />

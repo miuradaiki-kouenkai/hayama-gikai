@@ -12,7 +12,7 @@ export function TeamMirai() {
         {/* コンテンツ */}
         <div className="flex flex-col gap-6">
           <div className="flex flex-col gap-3">
-            <p className="text-[15px] leading-[28px] text-black">
+            <p className="text-[15px] leading-[28px] text-mirai-text">
               みらい議会＠葉山町は、葉山町の町政をわかりやすく伝えるために運営されている非公式の取り組みです。これは政党チームみらいが運営しているものではありません。本家「みらい議会」の仕組みを活用し、葉山町議会の議案や意見を届けることを目指しています。
             </p>
           </div>
